@@ -83,8 +83,8 @@ YUtils.i(YUtils.getScreenWidth()+"");
  我的博客：http://blog.csdn.net/yechaoa  
  
  	我的邮箱：best_yc@163.com  
-
-MIT License
+<br><br>
+#### MIT License
 
 Copyright (c) 2017 bige-ye
 
