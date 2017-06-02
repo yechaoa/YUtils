@@ -5,5 +5,10 @@
 /.idea/libraries
 .DS_Store
 /build
+/app/build
 /captures
 .externalNativeBuild
+/.idea
+/gradle
+/gradlew
+/gradlew.bat
