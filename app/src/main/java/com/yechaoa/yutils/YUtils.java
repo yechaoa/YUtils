@@ -309,6 +309,39 @@ public class YUtils {
 
 
     /**
+     * showToast 底部显示（默认）
+     * @param msg 需要显示的参数
+     */
+    public static void showToast(final String msg) {
+        if ("main".equals(Thread.currentThread().getName())) {
+            createToast(msg);
+        } else {
+            YUtils.getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    createToast(msg);
+                }
+            });
+        }
+    }
+
+    /**
+     * createToast
+     * @param msg 接收参数
+     */
+    private static void createToast(String msg) {
+        if(toast==null){
+            toast = Toast.makeText(YUtils.getActivity(), msg, Toast.LENGTH_SHORT);
+        }else{
+            toast.setText(msg);
+        }
+        LinearLayout linearLayout = (LinearLayout) toast.getView();
+        TextView messageTextView = (TextView) linearLayout.getChildAt(0);
+        messageTextView.setTextSize(15);
+        toast.show();
+    }
+
+    /**
      * showCenterToast 居中显示
      * @param msg 需要显示的参数
      */
@@ -338,176 +371,6 @@ public class YUtils {
         LinearLayout linearLayout = (LinearLayout) toast.getView();
         TextView messageTextView = (TextView) linearLayout.getChildAt(0);
         toast.setGravity(Gravity.CENTER, 0, 0);
-        messageTextView.setTextSize(15);
-        toast.show();
-    }
-
-    /**
-     * showTopToast 顶部显示
-     * @param msg 需要显示的参数
-     */
-    public static void showTopToast(final String msg) {
-        if ("main".equals(Thread.currentThread().getName())) {
-            createTopToast(msg);
-        } else {
-            YUtils.getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    createTopToast(msg);
-                }
-            });
-        }
-    }
-
-    /**
-     * createTopToast
-     * @param msg 接收参数
-     */
-    private static void createTopToast(String msg) {
-        if(toast==null){
-            toast = Toast.makeText(YUtils.getActivity(), msg, Toast.LENGTH_SHORT);
-        }else{
-            toast.setText(msg);
-        }
-        LinearLayout linearLayout = (LinearLayout) toast.getView();
-        TextView messageTextView = (TextView) linearLayout.getChildAt(0);
-        toast.setGravity(Gravity.TOP, 0, getScreenWidth()/5);
-        messageTextView.setTextSize(15);
-        toast.show();
-    }
-
-    /**
-     * showBottomToast 底部显示
-     * @param msg 需要显示的参数
-     */
-    public static void showBottomToast(final String msg) {
-        if ("main".equals(Thread.currentThread().getName())) {
-            createBottomToast(msg);
-        } else {
-            YUtils.getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    createBottomToast(msg);
-                }
-            });
-        }
-    }
-
-    /**
-     * createBottomToast
-     * @param msg 接收参数
-     */
-    private static void createBottomToast(String msg) {
-        if(toast==null){
-            toast = Toast.makeText(YUtils.getActivity(), msg, Toast.LENGTH_SHORT);
-        }else{
-            toast.setText(msg);
-        }
-        LinearLayout linearLayout = (LinearLayout) toast.getView();
-        TextView messageTextView = (TextView) linearLayout.getChildAt(0);
-        //toast.setGravity(Gravity.BOTTOM, 0, 0);使用默认位置
-        messageTextView.setTextSize(15);
-        toast.show();
-    }
-
-    /**
-     * showCenterLongToast
-     * @param msg 需要显示的参数
-     */
-    public static void showCenterLongToast(final String msg) {
-        if ("main".equals(Thread.currentThread().getName())) {
-            createCenterLongToast(msg);
-        } else {
-            YUtils.getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    createCenterLongToast(msg);
-                }
-            });
-        }
-    }
-
-    /**
-     * createCenterLongToast
-     * @param msg 接收参数
-     */
-    private static void createCenterLongToast(String msg) {
-        if(toast==null){
-            toast = Toast.makeText(YUtils.getActivity(), msg, Toast.LENGTH_LONG);
-        }else{
-            toast.setText(msg);
-        }
-        LinearLayout linearLayout = (LinearLayout) toast.getView();
-        TextView messageTextView = (TextView) linearLayout.getChildAt(0);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        messageTextView.setTextSize(15);
-        toast.show();
-    }
-
-    /**
-     * showTopLongToast
-     * @param msg 需要显示的参数
-     */
-    public static void showTopLongToast(final String msg) {
-        if ("main".equals(Thread.currentThread().getName())) {
-            createTopLongToast(msg);
-        } else {
-            YUtils.getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    createTopLongToast(msg);
-                }
-            });
-        }
-    }
-
-    /**
-     * createTopLongToast
-     * @param msg 接收参数
-     */
-    private static void createTopLongToast(String msg) {
-        if(toast==null){
-            toast = Toast.makeText(YUtils.getActivity(), msg, Toast.LENGTH_LONG);
-        }else{
-            toast.setText(msg);
-        }
-        LinearLayout linearLayout = (LinearLayout) toast.getView();
-        TextView messageTextView = (TextView) linearLayout.getChildAt(0);
-        toast.setGravity(Gravity.TOP, 0, getScreenWidth()/5);
-        messageTextView.setTextSize(15);
-        toast.show();
-    }
-
-    /**
-     * showBottomLongToast
-     * @param msg 需要显示的参数
-     */
-    public static void showBottomLongToast(final String msg) {
-        if ("main".equals(Thread.currentThread().getName())) {
-            createBottomLongToast(msg);
-        } else {
-            YUtils.getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    createBottomLongToast(msg);
-                }
-            });
-        }
-    }
-
-    /**
-     * createBottomLongToast
-     * @param msg 接收参数
-     */
-    private static void createBottomLongToast(String msg) {
-        if(toast==null){
-            toast = Toast.makeText(YUtils.getActivity(), msg, Toast.LENGTH_LONG);
-        }else{
-            toast.setText(msg);
-        }
-        LinearLayout linearLayout = (LinearLayout) toast.getView();
-        TextView messageTextView = (TextView) linearLayout.getChildAt(0);
-        //toast.setGravity(Gravity.BOTTOM, 0, 0);使用默认位置
         messageTextView.setTextSize(15);
         toast.show();
     }
