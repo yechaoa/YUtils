@@ -77,8 +77,8 @@ YUtils.i(YUtils.getScreenWidth()+"");
 * float px2dp(int px)<br>px2dp
 * void copyToClipboard(String text)<br>复制文本到粘贴板
 * boolean isNetWorkAvailable()<br>判断网络状态
-* void showCenterToast(final String msg)<br>showCenterToast 居中显示，短时间显示
 * void showToast(final String msg)<br>底部显示(默认)
+* void showCenterToast(final String msg)<br>showCenterToast 居中显示
 * void cancelToast()<br>取消Toast，onDestroy时调用，或者onPause，当前页面finish之后在下一个页面不会再显示
  <br>  
  
