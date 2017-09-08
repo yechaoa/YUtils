@@ -77,12 +77,8 @@ YUtils.i(YUtils.getScreenWidth()+"");
 * float px2dp(int px)<br>px2dp
 * void copyToClipboard(String text)<br>复制文本到粘贴板
 * boolean isNetWorkAvailable()<br>判断网络状态
-* void showCenterToast(final String msg)<br>showCenterToast 居中显示，短时间显示
-* void showTopToast(final String msg)<br>顶部显示
-* void showBottomToast(final String msg)<br>底部显示(默认)
-* void showCenterLongToast(final String msg)<br>showCenterLongToast，长时间显示
-* void showTopLongToast(final String msg)<br>showTopLongToast
-* void showBottomLongToast(final String msg)<br>showBottomLongToast
+* void showToast(final String msg)<br>底部显示(默认)
+* void showCenterToast(final String msg)<br>showCenterToast 居中显示
 * void cancelToast()<br>取消Toast，onDestroy时调用，或者onPause，当前页面finish之后在下一个页面不会再显示
  <br>  
  
@@ -92,7 +88,7 @@ YUtils.i(YUtils.getScreenWidth()+"");
 <br><br>
 #### MIT License
 
-Copyright (c) 2017 bige-ye
+Copyright (c) 2017 yechaoa
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
