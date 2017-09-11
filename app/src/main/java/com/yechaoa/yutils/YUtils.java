@@ -113,33 +113,6 @@ public class YUtils {
 
 
     /**
-     * Log 打印  不带Tag参数的
-     * @param msg 打印参数
-     */
-    public static void i(String msg) {
-        Log.i("Tag", "----------"+msg);
-    }
-
-    public static void e(String msg) {
-        Log.e("Tag", "----------"+msg);
-    }
-
-
-    /**
-     * Log 打印  带Tag参数的
-     * @param tag 打印标记
-     * @param msg 打印参数
-     */
-    public static void i(String tag,String msg) {
-        Log.i(tag, "----------"+msg);
-    }
-
-    public static void e(String tag,String msg) {
-        Log.e(tag, "----------"+msg);
-    }
-
-
-    /**
      * @return 获取屏幕宽度
      */
     public static int getScreenWidth(){
