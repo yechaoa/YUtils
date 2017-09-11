@@ -1,6 +1,7 @@
 package com.yechaoa.yutils;
 
 import android.app.Activity;
+import android.app.Application;
 import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -27,7 +28,7 @@ import java.util.regex.Pattern;
  * Created by yechao on 2017/4/2.
  * Describe : 快速开发工具集合
  *
- * GitHub : https://github.com/bige-ye
+ * GitHub : https://github.com/yechaoa
  * CSDN : http://blog.csdn.net/yechaoa
  *
  */
@@ -39,6 +40,15 @@ public class YUtils {
     public static final String FILE_NAME = "config";
     private static Toast toast;
     private static ProgressDialog progressDialog;
+    private static Application mApplicationContext;
+
+    public static void initialize(Application app){
+        mApplicationContext = app;
+    }
+
+    public static Application getApplication(){
+        return mApplicationContext;
+    }
 
     /**
      * @param act 设置当前Activity

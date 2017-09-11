@@ -5,6 +5,10 @@ import android.util.Log;
 /**
  * Created by yechao on 2017/9/8.
  * Describe : 日志管理
+ *
+ * GitHub : https://github.com/yechaoa
+ * CSDN : http://blog.csdn.net/yechaoa
+ *
  */
 
 public class LogUtil {
