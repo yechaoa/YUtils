@@ -5,7 +5,10 @@ import android.os.HandlerThread;
 
 /**
  * Created by yechao on 2017/3/21.
- * Describe :
+ * Describe : ExitUtils
+ * <p>
+ * GitHub : https://github.com/yechaoa
+ * CSDN : http://blog.csdn.net/yechaoa
  */
 
 public class ExitUtils {

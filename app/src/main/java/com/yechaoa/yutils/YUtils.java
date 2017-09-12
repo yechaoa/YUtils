@@ -6,15 +6,19 @@ import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.util.Base64;
-import android.util.Log;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,122 +31,49 @@ import java.util.regex.Pattern;
 /**
  * Created by yechao on 2017/4/2.
  * Describe : 快速开发工具集合
- *
+ * <p>
  * GitHub : https://github.com/yechaoa
  * CSDN : http://blog.csdn.net/yechaoa
- *
  */
 
 public class YUtils {
 
-    private static Activity activity;
-    public static SharedPreferences sp;
-    public static final String FILE_NAME = "config";
     private static Toast toast;
     private static ProgressDialog progressDialog;
     private static Application mApplicationContext;
 
-    public static void initialize(Application app){
+    public static void initialize(Application app) {
         mApplicationContext = app;
     }
 
-    public static Application getApplication(){
+    public static Application getApplication() {
         return mApplicationContext;
     }
 
     /**
-     * @param act 设置当前Activity
+     * 获取屏幕宽度
      */
-    public static void setActivity(Activity act) {
-        activity = act;
-        sp = activity.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
+    public static int getScreenWidth() {
+        DisplayMetrics dm = new DisplayMetrics();
+        ActivityUtil.currentActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+        return dm.widthPixels;
     }
 
     /**
-     * @return 获取当前Activity
+     * 获取屏幕高度
      */
-    public static Activity getActivity() {
-        return activity;
-    }
-
-
-    /**
-     * String操作
-     * @param key
-     * @param value
-     */
-    public static void setString(String key, String value) {
-        sp.edit().putString(key, value).commit();
-    }
-
-    public static String getString(String key) {
-        return sp.getString(key, "");
-    }
-
-    /**
-     * int操作
-     * @param key
-     * @param value
-     */
-    public static void setInt(String key, int value) {
-        sp.edit().putInt(key, value).commit();
-    }
-
-    public static int getInt(String key) {
-        return sp.getInt(key, 0);
-    }
-
-    /**
-     * Boolean操作
-     * @param key
-     * @param value
-     */
-    public static void setBoolean(String key, boolean value) {
-        sp.edit().putBoolean(key, value).commit();
-    }
-
-    public static boolean getBoolean(String key) {
-        return sp.getBoolean(key, false);
-    }
-
-    /**
-     * 根据key值移除value
-     * @param key
-     */
-    public static void removeString(String key) {
-        sp.edit().remove(key).commit();
-    }
-
-    /**
-     * 移除所有
-     * @param key
-     */
-    public static void removeAll(String key) {
-        sp.edit().clear().commit();
-    }
-
-
-    /**
-     * @return 获取屏幕宽度
-     */
-    public static int getScreenWidth(){
-        return YUtils.getActivity().getWindowManager().getDefaultDisplay().getWidth();
-    }
-
-    /**
-     * @return 获取屏幕高度
-     */
-    public static int getScreenHeight(){
-        return YUtils.getActivity().getWindowManager().getDefaultDisplay().getHeight();
+    public static int getScreenHeight() {
+        DisplayMetrics dm = new DisplayMetrics();
+        ActivityUtil.currentActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+        return dm.heightPixels;
     }
 
 
     /**
      * Loading加载框
-     * @param msg 显示的参数
      */
-    public static void showLoading(String msg){
-        progressDialog = ProgressDialog.show(YUtils.getActivity(), "",msg, true, true);
+    public static void showLoading(String msg) {
+        progressDialog = ProgressDialog.show(ActivityUtil.currentActivity(), "", msg, true, true);
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
     }
@@ -150,8 +81,8 @@ public class YUtils {
     /**
      * dismissLoading
      */
-    public static void dismissLoading(){
-        if(progressDialog!=null&&progressDialog.isShowing()){
+    public static void dismissLoading() {
+        if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
     }
@@ -161,15 +92,14 @@ public class YUtils {
      * 根据时间休眠然后关闭当前页面
      * 比如：5秒自动返回
      * 或者只需要后台给一个结果而已
-     * @param millis 时长
      */
-    public static void finishBySleep(final long millis){
+    public static void finishBySleep(final long millis) {
         new Thread() {
             @Override
             public void run() {
                 try {
                     Thread.sleep(millis);
-                    YUtils.getActivity().finish();
+                    ActivityUtil.currentActivity().finish();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -179,12 +109,12 @@ public class YUtils {
 
 
     /**
-     * @return 获取版本名
+     * 获取版本名
      */
-    public static String getVersionName(){
+    public static String getVersionName() {
         try {
-            PackageManager packageManager = YUtils.getActivity().getPackageManager();
-            PackageInfo packageInfo = packageManager.getPackageInfo(YUtils.getActivity().getPackageName(), 0);
+            PackageManager packageManager = YUtils.getApplication().getPackageManager();
+            PackageInfo packageInfo = packageManager.getPackageInfo(YUtils.getApplication().getPackageName(), 0);
             return packageInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
@@ -193,12 +123,12 @@ public class YUtils {
     }
 
     /**
-     * @return 获取版本号
+     * 获取版本号
      */
-    public static int getVersionCode(){
+    public static int getVersionCode() {
         try {
-            PackageManager packageManager = YUtils.getActivity().getPackageManager();
-            PackageInfo packageInfo = packageManager.getPackageInfo(YUtils.getActivity().getPackageName(), 0);
+            PackageManager packageManager = YUtils.getApplication().getPackageManager();
+            PackageInfo packageInfo = packageManager.getPackageInfo(YUtils.getApplication().getPackageName(), 0);
             return packageInfo.versionCode;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
@@ -209,8 +139,6 @@ public class YUtils {
 
     /**
      * 检验手机号
-     * @param mobiles
-     * @return
      */
     public static boolean checkPhoneNumber(String mobiles) {
         Pattern p = null;
@@ -225,8 +153,6 @@ public class YUtils {
 
     /**
      * MD5加密
-     * @param data
-     * @return
      */
     public static String MD5(String data) {
         MessageDigest md5 = null;
@@ -243,45 +169,60 @@ public class YUtils {
 
     /**
      * dp2px
-     * @param dp
-     * @return
      */
-    public static int dp2px(float dp){
-        float density = YUtils.getActivity().getResources().getDisplayMetrics().density;
-        return (int)(dp * density+0.5f);
+    public static int dp2px(float dp) {
+        float density = YUtils.getApplication().getResources().getDisplayMetrics().density;
+        return (int) (dp * density + 0.5f);
     }
 
     /**
      * px2dp
-     * @param px
-     * @return
      */
-    public static float px2dp(int px){
-        float density = YUtils.getActivity().getResources().getDisplayMetrics().density;
-        return px/density;
+    public static float px2dp(int px) {
+        float density = YUtils.getApplication().getResources().getDisplayMetrics().density;
+        return px / density;
     }
 
 
     /**
      * 复制文本到粘贴板
-     * @param text 需要复制的参数
      */
-    public static void copyToClipboard(String text){
-        if(Build.VERSION.SDK_INT >= 11){
-            ClipboardManager cbm = (ClipboardManager) YUtils.getActivity().getSystemService(Activity.CLIPBOARD_SERVICE);
-            cbm.setPrimaryClip(ClipData.newPlainText(YUtils.getActivity().getPackageName(), text));
-        }else {
-            android.text.ClipboardManager cbm = (android.text.ClipboardManager) YUtils.getActivity().getSystemService(Activity.CLIPBOARD_SERVICE);
+    public static void copyToClipboard(String text) {
+        if (Build.VERSION.SDK_INT >= 11) {
+            ClipboardManager cbm = (ClipboardManager) YUtils.getApplication().getSystemService(Activity.CLIPBOARD_SERVICE);
+            cbm.setPrimaryClip(ClipData.newPlainText(YUtils.getApplication().getPackageName(), text));
+        } else {
+            android.text.ClipboardManager cbm = (android.text.ClipboardManager) YUtils.getApplication().getSystemService(Activity.CLIPBOARD_SERVICE);
             cbm.setText(text);
         }
     }
 
 
+    public static View Foreground(View view, int color, int start, int end) {
+        if (view instanceof Button) {
+            Button btn = (Button) view;
+            // 获取文字
+            Spannable span = new SpannableString(btn.getText().toString());
+            //设置颜色和起始位置
+            span.setSpan(new ForegroundColorSpan(color), start, end, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+            btn.setText(span);
+            return btn;
+        } else if (view instanceof TextView) {//EditText extends TextView
+            TextView text = (TextView) view;
+            Spannable span = new SpannableString(text.getText().toString());
+            span.setSpan(new ForegroundColorSpan(color), start, end, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+            text.setText(span);
+            return text;
+        }
+        return null;
+    }
+
+
     /**
-     * @return 判断网络状态
+     * 判断网络状态
      */
-    public static boolean isNetWorkAvailable(){
-        ConnectivityManager connectivityManager = (ConnectivityManager) YUtils.getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+    public static boolean isNetWorkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) YUtils.getApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = connectivityManager.getActiveNetworkInfo();
         if (info != null && info.isAvailable()) {
             return true;
@@ -293,13 +234,12 @@ public class YUtils {
 
     /**
      * showToast 底部显示（默认）
-     * @param msg 需要显示的参数
      */
     public static void showToast(final String msg) {
         if ("main".equals(Thread.currentThread().getName())) {
             createToast(msg);
         } else {
-            YUtils.getActivity().runOnUiThread(new Runnable() {
+            ActivityUtil.currentActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     createToast(msg);
@@ -310,12 +250,11 @@ public class YUtils {
 
     /**
      * createToast
-     * @param msg 接收参数
      */
     private static void createToast(String msg) {
-        if(toast==null){
-            toast = Toast.makeText(YUtils.getActivity(), msg, Toast.LENGTH_SHORT);
-        }else{
+        if (toast == null) {
+            toast = Toast.makeText(YUtils.getApplication(), msg, Toast.LENGTH_SHORT);
+        } else {
             toast.setText(msg);
         }
         LinearLayout linearLayout = (LinearLayout) toast.getView();
@@ -326,13 +265,12 @@ public class YUtils {
 
     /**
      * showCenterToast 居中显示
-     * @param msg 需要显示的参数
      */
     public static void showCenterToast(final String msg) {
         if ("main".equals(Thread.currentThread().getName())) {
             createCenterToast(msg);
         } else {
-            YUtils.getActivity().runOnUiThread(new Runnable() {
+            ActivityUtil.currentActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     createCenterToast(msg);
@@ -343,12 +281,11 @@ public class YUtils {
 
     /**
      * createCenterToast
-     * @param msg 接收参数
      */
     private static void createCenterToast(String msg) {
-        if(toast==null){
-            toast = Toast.makeText(YUtils.getActivity(), msg, Toast.LENGTH_SHORT);
-        }else{
+        if (toast == null) {
+            toast = Toast.makeText(YUtils.getApplication(), msg, Toast.LENGTH_SHORT);
+        } else {
             toast.setText(msg);
         }
         LinearLayout linearLayout = (LinearLayout) toast.getView();
@@ -364,7 +301,7 @@ public class YUtils {
      * 当前页面finish之后在下一个页面不会显示
      */
     public static void cancelToast() {
-        if(toast!=null){
+        if (toast != null) {
             toast.cancel();
         }
     }

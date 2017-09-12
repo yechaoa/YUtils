@@ -11,6 +11,9 @@ import java.util.Stack;
 /**
  * Created by yechao on 2017/9/11.
  * Describe : Activity管理
+ * <p>
+ * GitHub : https://github.com/yechaoa
+ * CSDN : http://blog.csdn.net/yechaoa
  */
 
 @TargetApi(14)
