@@ -44,22 +44,6 @@ Step 2  app：build.gradle
 
 * Application getApplication()<br>获取全局上下文  
 
-* void setString(String key, String value)<br>setString      
-
-* String getString(String key)<br>getString
-
-* void setInt(String key, int value)<br>setInt
-
-* int getInt(String key)<br>getInt
-
-* void setBoolean(String key, boolean value)<br>setBoolean
-
-* boolean getBoolean(String key)<br>getBoolean
-
-* void removeString(String key)<br>根据key值移除value
-
-* void removeAll()<br>移除所有
-
 * int getScreenWidth()<br>获取屏幕宽度
 
 * int getScreenHeight()<br>获取屏幕高度
