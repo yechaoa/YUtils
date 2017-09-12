@@ -197,7 +197,9 @@ public class YUtils {
         }
     }
 
-
+    /**
+     * 字体高亮
+     */
     public static View Foreground(View view, int color, int start, int end) {
         if (view instanceof Button) {
             Button btn = (Button) view;
