@@ -10,7 +10,7 @@ import java.util.Stack;
 
 /**
  * Created by yechao on 2017/9/11.
- * Describe : Activity管理
+ * Describe : Activity管理  thanks jude95
  * <p>
  * GitHub : https://github.com/yechaoa
  * CSDN : http://blog.csdn.net/yechaoa
@@ -67,6 +67,9 @@ public class ActivityUtil {
         return instance;
     }
 
+    /**
+     * 获得当前栈顶Activity
+     */
     public static Activity currentActivity() {
         Activity activity = null;
         if (!activityStack.isEmpty())
@@ -74,6 +77,9 @@ public class ActivityUtil {
         return activity;
     }
 
+    /**
+     * 获得当前Activity名字
+     */
     public static String getCurrentActivityName() {
         Activity activity = currentActivity();
         String name = "";
@@ -83,13 +89,18 @@ public class ActivityUtil {
         return name;
     }
 
+    /**
+     * 关闭当前Activity
+     */
     public static void closeActivity(Activity activity) {
         if (activity != null) {
             activityStack.remove(activity);
             activity.finish();
         }
     }
-
+    /**
+     * 关闭所有Activity
+     */
     public static void closeAllActivity() {
         while (true) {
             Activity activity = currentActivity();
