@@ -55,7 +55,7 @@ public class YUtils {
      */
     public static int getScreenWidth() {
         DisplayMetrics dm = new DisplayMetrics();
-        ActivityUtil.currentActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+        ActivityUtil.getCurrentActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
         return dm.widthPixels;
     }
 
@@ -64,7 +64,7 @@ public class YUtils {
      */
     public static int getScreenHeight() {
         DisplayMetrics dm = new DisplayMetrics();
-        ActivityUtil.currentActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+        ActivityUtil.getCurrentActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
         return dm.heightPixels;
     }
 
@@ -73,7 +73,7 @@ public class YUtils {
      * Loading加载框
      */
     public static void showLoading(String msg) {
-        progressDialog = ProgressDialog.show(ActivityUtil.currentActivity(), "", msg, true, true);
+        progressDialog = ProgressDialog.show(ActivityUtil.getCurrentActivity(), "", msg, true, true);
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
     }
@@ -99,7 +99,7 @@ public class YUtils {
             public void run() {
                 try {
                     Thread.sleep(millis);
-                    ActivityUtil.currentActivity().finish();
+                    ActivityUtil.getCurrentActivity().finish();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -241,7 +241,7 @@ public class YUtils {
         if ("main".equals(Thread.currentThread().getName())) {
             createToast(msg);
         } else {
-            ActivityUtil.currentActivity().runOnUiThread(new Runnable() {
+            ActivityUtil.getCurrentActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     createToast(msg);
@@ -272,7 +272,7 @@ public class YUtils {
         if ("main".equals(Thread.currentThread().getName())) {
             createCenterToast(msg);
         } else {
-            ActivityUtil.currentActivity().runOnUiThread(new Runnable() {
+            ActivityUtil.getCurrentActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     createCenterToast(msg);
