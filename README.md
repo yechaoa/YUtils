@@ -6,6 +6,7 @@
 ![](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![](https://img.shields.io/badge/to%20be%20happy-%E5%BC%80%E5%BF%83%E5%B0%B1%E5%A5%BD-green.svg)
 
+2.0.0全面改版升级，文档待重新整理
 
 How to
 
