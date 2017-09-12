@@ -5,7 +5,7 @@ import org.json.JSONObject;
 
 /**
  * Created by yechao on 2017/3/21.
- * Describe : 直接解析Json
+ * Describe : 直接解析 Json
  * <p>
  * GitHub : https://github.com/yechaoa
  * CSDN : http://blog.csdn.net/yechaoa
