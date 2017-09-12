@@ -70,7 +70,7 @@ public class ActivityUtil {
     /**
      * 获得当前栈顶Activity
      */
-    public static Activity currentActivity() {
+    public static Activity getCurrentActivity() {
         Activity activity = null;
         if (!activityStack.isEmpty())
             activity = activityStack.peek();
@@ -81,7 +81,7 @@ public class ActivityUtil {
      * 获得当前Activity名字
      */
     public static String getCurrentActivityName() {
-        Activity activity = currentActivity();
+        Activity activity = getCurrentActivity();
         String name = "";
         if (activity != null) {
             name = activity.getComponentName().getClassName();
@@ -92,7 +92,7 @@ public class ActivityUtil {
     /**
      * 关闭当前Activity
      */
-    public static void closeActivity(Activity activity) {
+    public static void finishActivity(Activity activity) {
         if (activity != null) {
             activityStack.remove(activity);
             activity.finish();
@@ -103,11 +103,11 @@ public class ActivityUtil {
      */
     public static void closeAllActivity() {
         while (true) {
-            Activity activity = currentActivity();
+            Activity activity = getCurrentActivity();
             if (null == activity) {
                 break;
             }
-            closeActivity(activity);
+            finishActivity(activity);
         }
     }
 
@@ -126,7 +126,7 @@ public class ActivityUtil {
                 }
                 continue;
             }
-            closeActivity(activity);
+            finishActivity(activity);
             break;
         }
     }
