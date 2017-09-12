@@ -77,7 +77,7 @@ public class SpUtil {
         sp.edit().remove(key).apply();
     }
 
-    public static void removeAll(String key) {
+    public static void removeAll() {
         sp.edit().clear().apply();
     }
 
