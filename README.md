@@ -26,19 +26,19 @@ Step 2  app：build.gradle
 	}
   
   
-### 一、初始化（init）
+## 一、初始化（init）
 #### in your Application
 
-> //初始化
-        YUtils.initialize(this);
-        //设置打印开关
-        LogUtil.setIsLog(true);
-        //注册Activity生命周期
-        registerActivityLifecycleCallbacks(ActivityUtil.getActivityLifecycleCallbacks());
+> //初始化<br>
+        YUtils.initialize(this);<br>
+        //设置打印开关<br>
+        LogUtil.setIsLog(true);<br>
+        //注册Activity生命周期<br>
+        registerActivityLifecycleCallbacks(ActivityUtil.getActivityLifecycleCallbacks());<br>
 
-### 二、使用（use）
+## 二、使用（use）
 
-> #### 1.YUtils（各种小工具）
+> ### 1.YUtils（各种小工具）
 
 * void initialize(Application app)<br>Application 中初始化
 
@@ -94,7 +94,7 @@ Step 2  app：build.gradle
 
 * void cancelToast()<br>取消Toast，onDestroy时调用，或onPause，当前页面finish之后在下一个页面不会再显示
  
-> #### 2.LogUtil（日志打印，带方法行数链接，可超长打印）
+> ### 2.LogUtil（日志打印，带方法行数链接，可超长打印）
 
 * void setIsLog(boolean isLog)<br>是否打印
 
@@ -108,7 +108,7 @@ Step 2  app：build.gradle
 
 * void e(String TAG, String msg)<br> 
 
-> #### 3.ActivityUtil（Activity管理）
+> ### 3.ActivityUtil（Activity管理）
 
 * Activity getCurrentActivity()<br> 获得当前栈顶Activity
 
@@ -118,7 +118,7 @@ Step 2  app：build.gradle
 
 * void closeAllActivity()<br> 关闭所有Activity
 
-> #### 4.SpUtil（SharedPreferences）
+> ### 4.SpUtil（SharedPreferences）
 
 * void setString(String key, String value)<br> String
 
@@ -144,7 +144,7 @@ Step 2  app：build.gradle
 
 * void removeAll()<br> 移除所有
 
-> #### 5.ParseUtil（直接解析 Json）
+> ### 5.ParseUtil（直接解析 Json）
 
 like this
 ```
@@ -162,7 +162,7 @@ like this
 
 * String parseData(String response, String key)<br> 解析data
 
-> #### 6.GsonUtil
+> ### 6.GsonUtil
 
 * String GsonString(Object object)<br> 转成json
 
@@ -172,7 +172,7 @@ like this
 
 * <T> GsonToMaps(String gsonString)
 
-> #### 7.ExitUtils
+> ### 7.ExitUtils
 
 like this 
 
@@ -200,15 +200,6 @@ like this
         }
     }
 ```
-
- <br> 
- 我的GitHub：https://github.com/yechaoa/YUtils
- 
-    
-
-
-
-
 
 
  <br>  
