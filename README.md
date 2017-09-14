@@ -22,7 +22,7 @@ Step 1  project：build.gradle
 Step 2  app：build.gradle
 
 	dependencies {
-	        compile 'com.github.yechaoa:YUtils:2.0.3'
+	        compile 'com.github.yechaoa:YUtils:2.0.5'
 	}
   
   
@@ -49,6 +49,8 @@ Step 2  app：build.gradle
 * int getScreenHeight()<br>获取屏幕高度
 
 * void showLoading(String msg)<br>Loading加载框
+
+* void showLoading(Activity activity,String msg)<br>比第一种多个参数，在不确定是否还有其他dialog的情况下，使用第二种
 
 * void dismissLoading()<br>dismissLoading
 
