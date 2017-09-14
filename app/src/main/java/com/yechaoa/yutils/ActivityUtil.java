@@ -28,7 +28,8 @@ public class ActivityUtil {
 
         @Override
         public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-
+            activityStack.remove(activity);
+            activityStack.push(activity);
         }
 
         @Override
@@ -38,8 +39,7 @@ public class ActivityUtil {
 
         @Override
         public void onActivityResumed(Activity activity) {
-            activityStack.remove(activity);
-            activityStack.push(activity);
+
         }
 
         @Override
