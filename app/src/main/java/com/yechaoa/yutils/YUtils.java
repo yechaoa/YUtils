@@ -78,6 +78,12 @@ public class YUtils {
         progressDialog.show();
     }
 
+    public static void showLoading(Activity activity,String msg) {
+        progressDialog = ProgressDialog.show(activity, "", msg, true, true);
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
+    }
+
     /**
      * dismissLoading
      */
