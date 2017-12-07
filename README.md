@@ -9,7 +9,7 @@
 
 # Android快速开发工具集合——YUtils
 
-How to
+How to use
 
 Step 1  project：build.gradle
 
