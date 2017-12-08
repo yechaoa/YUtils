@@ -59,4 +59,16 @@ public class ParseUtil {
         return data;
     }
 
+    //解析info
+    public static String parseInfo(String response, String key) {
+        String info = "";
+        try {
+            JSONObject json = new JSONObject(response);
+            info = json.getString(key);
+        } catch (JSONException var) {
+            var.printStackTrace();
+        }
+        return info;
+    }
+
 }
