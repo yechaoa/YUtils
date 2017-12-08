@@ -18,6 +18,7 @@ import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -236,6 +237,17 @@ public class YUtils {
             return true;
         } else {
             return false;
+        }
+    }
+
+
+    /**
+     * 关闭软键盘
+     */
+    public static void closeSoftKeyboard(){
+        InputMethodManager inputManger = (InputMethodManager) ActivityUtil.getCurrentActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (inputManger!=null){
+            inputManger.hideSoftInputFromWindow(ActivityUtil.getCurrentActivity().getWindow().getDecorView().getWindowToken(), 0);
         }
     }
 
