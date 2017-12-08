@@ -6,9 +6,6 @@
 ![](https://img.shields.io/hexpm/l/plug.svg)
 ![](https://img.shields.io/badge/to%20be%20happy-%E5%BC%80%E5%BF%83%E5%B0%B1%E5%A5%BD-green.svg)
 
-
-# Android快速开发工具集合——YUtils
-
 How to use
 
 Step 1  project：build.gradle
