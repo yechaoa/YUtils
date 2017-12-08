@@ -22,7 +22,7 @@ Step 1  project：build.gradle
 Step 2  app：build.gradle
 
 	dependencies {
-	        compile 'com.github.yechaoa:YUtils:2.0.5'
+	        compile 'com.github.yechaoa:YUtils:2.0.6'
 	}
   
   
@@ -73,6 +73,8 @@ Step 2  app：build.gradle
 * View Foreground(View view, int color, int start, int end)<br>字体高亮（TextView、EditText、Button）like this ---》 YUtils.Foreground(mEditText, Color.RED,1,2);
 
 * boolean isNetWorkAvailable()<br>判断网络状态
+
+* void closeSoftKeyboard()<br>关闭软键盘
 
 * showToast(final String msg)<br>底部显示(默认)，任何线程且不会超长显示
 
@@ -147,6 +149,8 @@ like this
 * boolean parseFlag(String response)<br> 解析Flag
 
 * String parseData(String response, String key)<br> 解析data
+
+* String parseInfo(String response, String key)<br> 解析info
 
 > ### 6.GsonUtil
 
