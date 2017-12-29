@@ -255,6 +255,7 @@ public class YUtils {
     /**
      * showToast 底部显示（默认）
      */
+    @Deprecated
     public static void showToast(final String msg) {
         if ("main".equals(Thread.currentThread().getName())) {
             createToast(msg);
@@ -271,6 +272,7 @@ public class YUtils {
     /**
      * createToast
      */
+    @Deprecated
     private static void createToast(String msg) {
         if (toast == null) {
             toast = Toast.makeText(YUtils.getApplication(), msg, Toast.LENGTH_SHORT);
@@ -286,6 +288,7 @@ public class YUtils {
     /**
      * showCenterToast 居中显示
      */
+    @Deprecated
     public static void showCenterToast(final String msg) {
         if ("main".equals(Thread.currentThread().getName())) {
             createCenterToast(msg);
@@ -302,6 +305,7 @@ public class YUtils {
     /**
      * createCenterToast
      */
+    @Deprecated
     private static void createCenterToast(String msg) {
         if (toast == null) {
             toast = Toast.makeText(YUtils.getApplication(), msg, Toast.LENGTH_SHORT);
@@ -320,6 +324,7 @@ public class YUtils {
      * onDestroy时调用，或者onPause
      * 当前页面finish之后在下一个页面不会显示
      */
+    @Deprecated
     public static void cancelToast() {
         if (toast != null) {
             toast.cancel();

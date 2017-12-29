@@ -64,6 +64,45 @@ public class LogUtil {
         }
     }
 
+    public static void d(String msg) {
+        if (IS_LOG) {
+            String[] info = getAutoJumpLogInfos();
+            int strLength = msg.length();
+            int start = 0;
+            int end = MAX_LENGTH;
+            for (int i = 0; i < 100; i++) {
+                if (strLength > end) {
+                    Log.d(TAG, info[1] + info[2] + " --->> " + msg.substring(start, end));
+                    start = end;
+                    end = end + MAX_LENGTH;
+                } else {
+                    Log.d(TAG, info[1] + info[2] + " --->> " + msg.substring(start, strLength));
+                    break;
+                }
+            }
+        }
+    }
+
+    public static void d(String TAG, String msg) {
+        if (IS_LOG) {
+            String[] info = getAutoJumpLogInfos();
+            int strLength = msg.length();
+            int start = 0;
+            int end = MAX_LENGTH;
+            for (int i = 0; i < 100; i++) {
+                if (strLength > end) {
+                    Log.d(TAG, info[1] + info[2] + " --->> " + msg.substring(start, end));
+                    start = end;
+                    end = end + MAX_LENGTH;
+                } else {
+                    Log.d(TAG, info[1] + info[2] + " --->> " + msg.substring(start, strLength));
+                    break;
+                }
+            }
+
+        }
+    }
+
     public static void e(String msg) {
         if (IS_LOG) {
             String[] info = getAutoJumpLogInfos();
