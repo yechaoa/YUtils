@@ -254,6 +254,7 @@ public class YUtils {
 
     /**
      * showToast 底部显示（默认）
+     * move to ToastUtil
      */
     @Deprecated
     public static void showToast(final String msg) {
@@ -271,6 +272,7 @@ public class YUtils {
 
     /**
      * createToast
+     * move to ToastUtil
      */
     @Deprecated
     private static void createToast(String msg) {
@@ -287,6 +289,7 @@ public class YUtils {
 
     /**
      * showCenterToast 居中显示
+     * move to ToastUtil
      */
     @Deprecated
     public static void showCenterToast(final String msg) {
@@ -304,6 +307,7 @@ public class YUtils {
 
     /**
      * createCenterToast
+     * move to ToastUtil
      */
     @Deprecated
     private static void createCenterToast(String msg) {
@@ -323,6 +327,7 @@ public class YUtils {
      * 取消Toast
      * onDestroy时调用，或者onPause
      * 当前页面finish之后在下一个页面不会显示
+     * move to ToastUtil
      */
     @Deprecated
     public static void cancelToast() {
