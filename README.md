@@ -19,7 +19,7 @@ Step 1  project：build.gradle
 Step 2  app：build.gradle
 
 	dependencies {
-	        compile 'com.github.yechaoa:YUtils:2.0.6'
+	        compile 'com.github.yechaoa:YUtils:2.0.7'
 	}
   
   
@@ -72,6 +72,8 @@ Step 2  app：build.gradle
 * boolean isNetWorkAvailable()<br>判断网络状态
 
 * void closeSoftKeyboard()<br>关闭软键盘
+ 
+> ### 2.ToastUtil（任意线程，不重复显示，可取消）.
 
 * showToast(final String msg)<br>底部显示(默认)，任何线程且不会超长显示
 
@@ -79,7 +81,7 @@ Step 2  app：build.gradle
 
 * void cancelToast()<br>取消Toast，onDestroy时调用，或onPause，当前页面finish之后在下一个页面不会再显示
  
-> ### 2.LogUtil（日志打印，带方法行数链接，可超长打印）
+> ### 3.LogUtil（日志打印，带方法行数链接，可超长打印）
 
 * void setIsLog(boolean isLog)<br>是否打印
 
@@ -89,11 +91,15 @@ Step 2  app：build.gradle
 
 * void i(String TAG, String msg)<br> 带tag
 
+* void d(String msg)<br>
+
+* void d(String TAG, String msg)<br>
+
 * void e(String msg)<br> 
 
 * void e(String TAG, String msg)<br> 
 
-> ### 3.ActivityUtil（Activity管理）
+> ### 4.ActivityUtil（Activity管理）
 
 * Activity getCurrentActivity()<br> 获得当前栈顶Activity
 
@@ -103,7 +109,7 @@ Step 2  app：build.gradle
 
 * void closeAllActivity()<br> 关闭所有Activity
 
-> ### 4.SpUtil（SharedPreferences）
+> ### 5.SpUtil（SharedPreferences）
 
 * void setString(String key, String value)<br> String
 
@@ -129,7 +135,25 @@ Step 2  app：build.gradle
 
 * void removeAll()<br> 移除所有
 
-> ### 5.ParseUtil（直接解析 Json）
+> ### 6.ShareUtil（调用系统分享）
+
+* void shareImage(String title, Uri uri)<br> 分享图片
+
+* void shareText(String title, String text)<br> 分享文字
+
+> ### 7.TimeUtil
+
+* String getDate()<br> 获取当前年月日
+
+* String getTime()<br> 获取当前时分秒
+
+* String getDateAndTime()<br> 获取当前年月日时分秒
+
+* Long getTimeForLong()<br> 获取当前时间，返回Long类型
+
+* String formatDate(String mDate)<br> 转换为年月日
+
+> ### 8.ParseUtil（直接解析 Json）
 
 like this
 ```
@@ -149,7 +173,7 @@ like this
 
 * String parseInfo(String response, String key)<br> 解析info
 
-> ### 6.GsonUtil
+> ### 9.GsonUtil
 
 * String GsonString(Object object)<br> 转成json
 
@@ -159,7 +183,7 @@ like this
 
 * <T> GsonToMaps(String gsonString)
 
-> ### 7.ExitUtils
+> ### 10.ExitUtils
 
 like this 
 
