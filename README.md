@@ -19,9 +19,10 @@ Step 1  project：build.gradle
 Step 2  app：build.gradle
 
 	dependencies {
-	        compile 'com.github.yechaoa:YUtils:2.0.7'
+	        compile 'com.github.yechaoa:YUtils:2.0.8'
 	}
   
+> #### ***2.0.8的版本去掉了gson依赖，避免与其他第三方gson编译冲突，2.0.7的版本gson可用***
   
 ## 一、初始化（init）
 #### in your Application
