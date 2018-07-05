@@ -19,6 +19,7 @@ public class ToastUtil {
 
     /**
      * showToast 底部显示（默认）
+     *
      * @param msg 需要显示的参数
      */
     public static void showToast(final String msg) {
@@ -36,22 +37,25 @@ public class ToastUtil {
 
     /**
      * createToast
+     *
      * @param msg 接收参数
      */
     private static void createToast(String msg) {
-        if(toast==null){
+        if (toast == null) {
             toast = Toast.makeText(YUtils.getApplication(), msg, Toast.LENGTH_SHORT);
-        }else{
+        } else {
             toast.setText(msg);
         }
         LinearLayout linearLayout = (LinearLayout) toast.getView();
         TextView messageTextView = (TextView) linearLayout.getChildAt(0);
+        toast.setGravity(Gravity.BOTTOM, 0, 0);
         messageTextView.setTextSize(15);
         toast.show();
     }
 
     /**
      * showCenterToast 居中显示
+     *
      * @param msg 需要显示的参数
      */
     public static void showCenterToast(final String msg) {
@@ -69,12 +73,13 @@ public class ToastUtil {
 
     /**
      * createCenterToast
+     *
      * @param msg 接收参数
      */
     private static void createCenterToast(String msg) {
-        if(toast==null){
+        if (toast == null) {
             toast = Toast.makeText(YUtils.getApplication(), msg, Toast.LENGTH_SHORT);
-        }else{
+        } else {
             toast.setText(msg);
         }
         LinearLayout linearLayout = (LinearLayout) toast.getView();
@@ -90,7 +95,7 @@ public class ToastUtil {
      * 当前页面finish之后在下一个页面不会显示
      */
     public static void cancelToast() {
-        if(toast!=null){
+        if (toast != null) {
             toast.cancel();
         }
     }
