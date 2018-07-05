@@ -48,11 +48,11 @@ public class ParseUtil {
     }
 
     //解析data
-    public static String parseData(String response, String key) {
+    public static String parseData(String response) {
         String data = "";
         try {
             JSONObject json = new JSONObject(response);
-            data = json.getString(key);
+            data = json.getString("data");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -60,15 +60,27 @@ public class ParseUtil {
     }
 
     //解析info
-    public static String parseInfo(String response, String key) {
+    public static String parseInfo(String response) {
         String info = "";
         try {
             JSONObject json = new JSONObject(response);
-            info = json.getString(key);
+            info = json.getString("info");
         } catch (JSONException var) {
             var.printStackTrace();
         }
         return info;
+    }
+
+    //根据key值解析，只支持json中的一级字段
+    public static String parseByKey(String response,String key) {
+        String value = "";
+        try {
+            JSONObject json = new JSONObject(response);
+            value = json.getString(key);
+        } catch (JSONException var) {
+            var.printStackTrace();
+        }
+        return value;
     }
 
 }
