@@ -1,6 +1,7 @@
 # YUtils
 # Android快速开发工具集合——YUtils
-
+	
+[![](https://jitpack.io/v/yechaoa/YUtils.svg)](https://jitpack.io/#yechaoa/YUtils)
 ![](https://img.shields.io/github/release/bige-ye/YUtils.svg)
 ![](https://img.shields.io/badge/language-java-orange.svg)
 ![](https://img.shields.io/hexpm/l/plug.svg)
@@ -19,11 +20,10 @@ Step 1  project：build.gradle
 Step 2  app：build.gradle
 
 	dependencies {
-	        compile 'com.github.yechaoa:YUtils:2.0.8'
+	        implementation 'com.github.yechaoa:YUtils:2.0.9'
 	}
   
-> #### ***2.0.8的版本去掉了gson依赖，避免与其他第三方gson编译冲突，2.0.7的版本gson可用***
-  
+
 ## 一、初始化（init）
 #### in your Application
 
@@ -170,9 +170,11 @@ like this
 
 * boolean parseFlag(String response)<br> 解析Flag
 
-* String parseData(String response, String key)<br> 解析data
+* String parseData(String response)<br> 解析data
 
-* String parseInfo(String response, String key)<br> 解析info
+* String parseInfo(String response)<br> 解析info
+
+* String parseByKey(String response, String key)<br> 根据key值解析，只支持json中的一级字段
 
 > ### 9.GsonUtil
 
