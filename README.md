@@ -24,7 +24,7 @@ Step 2  app：build.gradle
 	}
   
 
-## 一、初始化（init）
+# 一、初始化（init）
 #### in your Application
 
 > //初始化<br>
@@ -34,9 +34,9 @@ Step 2  app：build.gradle
         //注册Activity生命周期<br>
         registerActivityLifecycleCallbacks(ActivityUtil.getActivityLifecycleCallbacks());<br>
 
-## 二、使用（use）
+# 二、使用（use）
 
-> ### 1.YUtils（各种小工具）
+> ## 1.YUtils（各种小工具）
 
 * void initialize(Application app)<br>Application 中初始化
 
@@ -74,7 +74,7 @@ Step 2  app：build.gradle
 
 * void closeSoftKeyboard()<br>关闭软键盘
  
-> ### 2.ToastUtil（任意线程，不重复显示，可取消）.
+> ## 2.ToastUtil（任意线程，不重复显示，可取消）.
 
 * showToast(final String msg)<br>底部显示(默认)，任何线程且不会超长显示
 
@@ -82,7 +82,7 @@ Step 2  app：build.gradle
 
 * void cancelToast()<br>取消Toast，onDestroy时调用，或onPause，当前页面finish之后在下一个页面不会再显示
  
-> ### 3.LogUtil（日志打印，带方法行数链接，可超长打印）
+> ## 3.LogUtil（日志打印，带方法行数链接，可超长打印）
 
 * void setIsLog(boolean isLog)<br>是否打印
 
@@ -100,7 +100,7 @@ Step 2  app：build.gradle
 
 * void e(String TAG, String msg)<br> 
 
-> ### 4.ActivityUtil（Activity管理）
+> ## 4.ActivityUtil（Activity管理）
 
 * Activity getCurrentActivity()<br> 获得当前栈顶Activity
 
@@ -110,7 +110,7 @@ Step 2  app：build.gradle
 
 * void closeAllActivity()<br> 关闭所有Activity
 
-> ### 5.SpUtil（SharedPreferences）
+> ## 5.SpUtil（SharedPreferences）
 
 * void setString(String key, String value)<br> String
 
@@ -136,13 +136,13 @@ Step 2  app：build.gradle
 
 * void removeAll()<br> 移除所有
 
-> ### 6.ShareUtil（调用系统分享）
+> ## 6.ShareUtil（调用系统分享）
 
 * void shareImage(String title, Uri uri)<br> 分享图片
 
 * void shareText(String title, String text)<br> 分享文字
 
-> ### 7.TimeUtil
+> ## 7.TimeUtil
 
 * String getDate()<br> 获取当前年月日
 
@@ -154,7 +154,7 @@ Step 2  app：build.gradle
 
 * String formatDate(String mDate)<br> 转换为年月日
 
-> ### 8.ParseUtil（直接解析 Json）
+> ## 8.ParseUtil（直接解析 Json）
 
 like this
 ```
@@ -176,7 +176,7 @@ like this
 
 * String parseByKey(String response, String key)<br> 根据key值解析，只支持json中的一级字段
 
-> ### 9.GsonUtil
+> ## 9.GsonUtil
 
 * String GsonString(Object object)<br> 转成json
 
@@ -186,7 +186,7 @@ like this
 
 * <T> GsonToMaps(String gsonString)
 
-> ### 10.ExitUtils
+> ## 10.ExitUtils
 
 like this 
 
