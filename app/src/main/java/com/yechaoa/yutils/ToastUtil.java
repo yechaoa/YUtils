@@ -48,7 +48,6 @@ public class ToastUtil {
         }
         LinearLayout linearLayout = (LinearLayout) toast.getView();
         TextView messageTextView = (TextView) linearLayout.getChildAt(0);
-        toast.setGravity(Gravity.BOTTOM, 0, 0);
         messageTextView.setTextSize(15);
         toast.show();
     }
