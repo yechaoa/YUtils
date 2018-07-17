@@ -20,7 +20,7 @@ Step 1  project：build.gradle
 Step 2  app：build.gradle
 
 	dependencies {
-	        implementation 'com.github.yechaoa:YUtils:2.0.9'
+	        implementation 'com.github.yechaoa:YUtils:2.1.0'
 	}
   
 
@@ -155,6 +155,8 @@ Step 2  app：build.gradle
 * String formatDate(String mDate)<br> 转换为年月日
 
 > ## 8.ParseUtil（直接解析 Json）
+
+2.0.8版本之后简化了解析方式，且不兼容更新
 
 like this
 ```
