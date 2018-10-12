@@ -216,7 +216,13 @@ like this
         }
     }
 ```
-
+ <br> 
+ 
+混淆
+```
+#YUtils
+-keep class com.yechaoa.yutils.**{*;}
+```
 
  <br>  
  
