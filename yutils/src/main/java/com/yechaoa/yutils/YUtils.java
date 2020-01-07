@@ -82,9 +82,9 @@ public class YUtils {
     }
 
     /**
-     * dismissLoading
+     * hideLoading
      */
-    public static void dismissLoading() {
+    public static void hideLoading() {
         if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
