@@ -26,7 +26,7 @@
 - Step 2  app：build.gradle
 ```
 	dependencies {
-	        implementation 'com.github.yechaoa:YUtils:3.0.1'
+	        implementation 'com.github.yechaoa:YUtils:3.0.2'
 	}
 ```
 
