@@ -57,7 +57,7 @@
 
 * void showLoading(Activity activity,String msg)<br>Loading加载框
 
-* void dismissLoading()<br>dismissLoading
+* void hideLoading()<br>hideLoading
 
 * void finishBySleep(final long millis)<br>根据时间休眠然后关闭当前页面,比如：3秒自动返回
 
