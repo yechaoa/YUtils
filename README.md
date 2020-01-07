@@ -1,4 +1,3 @@
-# YUtils
 # Android快速开发工具集合——YUtils
 	
 [![](https://jitpack.io/v/yechaoa/YUtils.svg)](https://jitpack.io/#yechaoa/YUtils)
@@ -7,34 +6,44 @@
 ![](https://img.shields.io/hexpm/l/plug.svg)
 ![](https://img.shields.io/badge/to%20be%20happy-%E5%BC%80%E5%BF%83%E5%B0%B1%E5%A5%BD-green.svg)
 
-How to use
+# 3.0.0 版本更新
+- 3.0.0新增了`kotlin`版本，除了调用方式遵循kotlin的语法之外，类名的区别在于添加了后缀`Kt`，比如`YUtilsKt`，其他以此类推；
+- 此外，java版本和kotlin版本都删除了`ExitUtils`
+- kotlin版本没有`GsonUtil`
 
-Step 1  project：build.gradle
+### How to use
 
+- Step 1  project：build.gradle
+
+```
 	allprojects {
 		repositories {
 			...
-			maven { url 'https://jitpack.io' }
+			maven { url 'https://www.jitpack.io' }
 		}
 	}
-Step 2  app：build.gradle
-
+```
+- Step 2  app：build.gradle
+```
 	dependencies {
-	        implementation 'com.github.yechaoa:YUtils:2.1.0'
+	        implementation 'com.github.yechaoa:YUtils:3.0.0'
 	}
-  
+```
 
-# 一、初始化（init）
+
+# 一、初始化
 #### in your Application
 
-> //初始化<br>
-        YUtils.initialize(this);<br>
-        //设置打印开关<br>
-        LogUtil.setIsLog(true);<br>
-        //注册Activity生命周期<br>
-        registerActivityLifecycleCallbacks(ActivityUtil.getActivityLifecycleCallbacks());<br>
+```
+  	//初始化
+        YUtils.initialize(this);
+        //设置打印开关
+        LogUtil.setIsLog(true);
+        //注册Activity生命周期
+        registerActivityLifecycleCallbacks(ActivityUtil.getActivityLifecycleCallbacks());
+```
 
-# 二、使用（use）
+# 二、功能
 
 > ## 1.YUtils（各种小工具）
 
@@ -70,9 +79,8 @@ Step 2  app：build.gradle
 
 * View Foreground(View view, int color, int start, int end)<br>字体高亮（TextView、EditText、Button）like this ---》 YUtils.Foreground(mEditText, Color.RED,1,2);
 
-* boolean isNetWorkAvailable()<br>判断网络状态
-
 * void closeSoftKeyboard()<br>关闭软键盘
+ 
  
 > ## 2.ToastUtil（任意线程，不重复显示，可取消）.
 
@@ -81,6 +89,7 @@ Step 2  app：build.gradle
 * void showCenterToast(final String msg)<br>showCenterToast 居中显示
 
 * void cancelToast()<br>取消Toast，onDestroy时调用，或onPause，当前页面finish之后在下一个页面不会再显示
+ 
  
 > ## 3.LogUtil（日志打印，带方法行数链接，可超长打印）
 
@@ -100,6 +109,7 @@ Step 2  app：build.gradle
 
 * void e(String TAG, String msg)<br> 
 
+
 > ## 4.ActivityUtil（Activity管理）
 
 * Activity getCurrentActivity()<br> 获得当前栈顶Activity
@@ -109,6 +119,7 @@ Step 2  app：build.gradle
 * void finishActivity(Activity activity)<br> 关闭当前Activity
 
 * void closeAllActivity()<br> 关闭所有Activity
+
 
 > ## 5.SpUtil（SharedPreferences）
 
@@ -136,11 +147,13 @@ Step 2  app：build.gradle
 
 * void removeAll()<br> 移除所有
 
+
 > ## 6.ShareUtil（调用系统分享）
 
 * void shareImage(String title, Uri uri)<br> 分享图片
 
 * void shareText(String title, String text)<br> 分享文字
+
 
 > ## 7.TimeUtil
 
@@ -164,8 +177,7 @@ like this
      "code": "0",
      "data": "修改成功",
      "flag": true,
-     "info": null,
-     "infoValues": null
+     "info": null
  }
 ```
 * String parseCode(String response)<br> 解析Code
@@ -178,6 +190,7 @@ like this
 
 * String parseByKey(String response, String key)<br> 根据key值解析，只支持json中的一级字段
 
+
 > ## 9.GsonUtil
 
 * String GsonString(Object object)<br> 转成json
@@ -188,34 +201,7 @@ like this
 
 * <T> GsonToMaps(String gsonString)
 
-> ## 10.ExitUtils
 
-like this 
-
-```
- private ExitUtils exit = new ExitUtils();
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            pressAgainExit();
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
-
-    /**
-     * 双击返回键退出
-     */
-    private void pressAgainExit() {
-        if (exit.isExit()) {
-            ActivityUtil.closeAllActivity();
-        } else {
-            YUtils.showToast("再按一次退出");
-            exit.doExitAction();
-        }
-    }
-```
  <br> 
  
 混淆
@@ -226,12 +212,18 @@ like this
 
  <br>  
  
- 我的博客：http://blog.csdn.net/yechaoa  
+# 关于
  
- 	我的邮箱：best_yc@163.com  
-<br><br>
-#### License
+- 我的博客：http://blog.csdn.net/yechaoa  
+- 我的邮箱：best_yc@163.com  
 
+
+<br><br>
+
+
+### License
+
+```
    Copyright 2017 yechaoa
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -245,3 +237,4 @@ like this
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
+```
