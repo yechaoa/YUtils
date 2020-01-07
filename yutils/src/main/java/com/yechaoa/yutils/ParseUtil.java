@@ -19,7 +19,6 @@ public class ParseUtil {
      * "data": "修改成功",
      * "flag": true,
      * "info": null,
-     * "infoValues": null
      * }
      */
 

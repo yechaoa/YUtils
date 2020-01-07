@@ -13,7 +13,7 @@ import java.util.Map;
 
 /**
  * Created by yechao on 2017/3/21.
- * Describe : ExitUtils
+ * Describe : json解析
  * <p>
  * GitHub : https://github.com/yechaoa
  * CSDN : http://blog.csdn.net/yechaoa

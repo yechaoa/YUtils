@@ -8,19 +8,15 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Build;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.util.Base64;
 import android.util.DisplayMetrics;
-import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -79,7 +75,7 @@ public class YUtils {
         progressDialog.show();
     }
 
-    public static void showLoading(Activity activity,String msg) {
+    public static void showLoading(Activity activity, String msg) {
         progressDialog = ProgressDialog.show(activity, "", msg, true, true);
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
@@ -226,115 +222,14 @@ public class YUtils {
         return null;
     }
 
-
-    /**
-     * 判断网络状态
-     */
-    public static boolean isNetWorkAvailable() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) YUtils.getApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo info = connectivityManager.getActiveNetworkInfo();
-        if (info != null && info.isAvailable()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-
     /**
      * 关闭软键盘
      */
-    public static void closeSoftKeyboard(){
+    public static void closeSoftKeyboard() {
         InputMethodManager inputManger = (InputMethodManager) ActivityUtil.getCurrentActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (inputManger!=null){
+        if (inputManger != null) {
             inputManger.hideSoftInputFromWindow(ActivityUtil.getCurrentActivity().getWindow().getDecorView().getWindowToken(), 0);
         }
     }
-
-
-    /**
-     * showToast 底部显示（默认）
-     * move to ToastUtil
-     */
-    @Deprecated
-    public static void showToast(final String msg) {
-        if ("main".equals(Thread.currentThread().getName())) {
-            createToast(msg);
-        } else {
-            ActivityUtil.getCurrentActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    createToast(msg);
-                }
-            });
-        }
-    }
-
-    /**
-     * createToast
-     * move to ToastUtil
-     */
-    @Deprecated
-    private static void createToast(String msg) {
-        if (toast == null) {
-            toast = Toast.makeText(YUtils.getApplication(), msg, Toast.LENGTH_SHORT);
-        } else {
-            toast.setText(msg);
-        }
-        LinearLayout linearLayout = (LinearLayout) toast.getView();
-        TextView messageTextView = (TextView) linearLayout.getChildAt(0);
-        messageTextView.setTextSize(15);
-        toast.show();
-    }
-
-    /**
-     * showCenterToast 居中显示
-     * move to ToastUtil
-     */
-    @Deprecated
-    public static void showCenterToast(final String msg) {
-        if ("main".equals(Thread.currentThread().getName())) {
-            createCenterToast(msg);
-        } else {
-            ActivityUtil.getCurrentActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    createCenterToast(msg);
-                }
-            });
-        }
-    }
-
-    /**
-     * createCenterToast
-     * move to ToastUtil
-     */
-    @Deprecated
-    private static void createCenterToast(String msg) {
-        if (toast == null) {
-            toast = Toast.makeText(YUtils.getApplication(), msg, Toast.LENGTH_SHORT);
-        } else {
-            toast.setText(msg);
-        }
-        LinearLayout linearLayout = (LinearLayout) toast.getView();
-        TextView messageTextView = (TextView) linearLayout.getChildAt(0);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        messageTextView.setTextSize(15);
-        toast.show();
-    }
-
-    /**
-     * 取消Toast
-     * onDestroy时调用，或者onPause
-     * 当前页面finish之后在下一个页面不会显示
-     * move to ToastUtil
-     */
-    @Deprecated
-    public static void cancelToast() {
-        if (toast != null) {
-            toast.cancel();
-        }
-    }
-
 
 }
