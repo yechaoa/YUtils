@@ -3,6 +3,7 @@ package com.yechaoa.yutilskt
 import android.content.Context
 import android.content.SharedPreferences
 
+
 /**
  * Created by yechao on 2020/1/7.
  * Describe : SpUtilKt
@@ -13,6 +14,7 @@ import android.content.SharedPreferences
 object SpUtilKt {
     private const val FILE_NAME = "config"
     private val sp: SharedPreferences = YUtilsKt.getApplication()!!.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE)
+
     /**
      * String
      */
@@ -22,6 +24,17 @@ object SpUtilKt {
 
     fun getString(key: String?): String {
         return sp.getString(key, "")
+    }
+
+    /**
+     * StringSet
+     */
+    fun setStringSet(key: String?, value: Set<String>?) {
+        sp.edit().putStringSet(key, value).apply()
+    }
+
+    fun getStringSet(key: String?): Set<String> {
+        return HashSet<String>(sp.getStringSet(key, HashSet<String>()))
     }
 
     /**
