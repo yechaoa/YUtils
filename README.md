@@ -122,7 +122,11 @@
 
 * void setString(String key, String value)<br> String
 
-* String getString(String key)<br> 
+* String getString(String key)<br>
+
+* void setStringSet(String key, Set<String> value)<br> StringSet
+
+* Set<String> getStringSet(String key)<br>
 
 * void setInt(String key, String value)<br> Int
 

@@ -3,6 +3,9 @@ package com.yechaoa.yutils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Created by yechao on 2017/9/11.
  * Describe : SpUtil
@@ -24,6 +27,17 @@ public class SpUtil {
 
     public static String getString(String key) {
         return sp.getString(key, "");
+    }
+
+    /**
+     * StringSet
+     */
+    public static void setStringSet(String key, Set<String> value) {
+        sp.edit().putStringSet(key, value).apply();
+    }
+
+    public static Set<String> getStringSet(String key) {
+        return sp.getStringSet(key, new HashSet<String>());
     }
 
     /**
