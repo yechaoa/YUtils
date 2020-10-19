@@ -5,11 +5,14 @@
 ![](https://img.shields.io/hexpm/l/plug.svg)
 ![](https://img.shields.io/badge/be%20happy-%E5%BC%80%E5%BF%83%E5%B0%B1%E5%A5%BD-green.svg)
 
-## 3.1.0 版本更新(2020-10-19)
+## 3.1.1 版本更新(2020-10-19)
+优化引用方式，可以kotlin和java分开引用，也可以一起引用。
+
+## 3.1.0
 简化了部分util原有的调用方式，属于兼容更新。
 
-## 3.0.0 版本更新
-- 3.0.0新增了`kotlin`版本，区别在于添加了类名后缀`Kt`，比如`YUtilsKt`，其他以此类推；
+### 3.0.0
+- 3.0.0以后新增了`kotlin`版本；
 - 此外，java版本和kotlin版本都删除了`ExitUtils`；
 - kotlin版本没有`GsonUtil`；
 
@@ -25,10 +28,17 @@ allprojects {
 	}
 }
 ```
-- Step 2  app：build.gradle
+- Step 2  app：build.gradle（以下3种引用方式，三选一即可）
 ```
 dependencies {
-    implementation 'com.github.yechaoa:YUtils:3.1.0'
+    //kotlin 版本
+    implementation 'com.github.yechaoa.YUtils:yutilskt:3.1.1'
+
+    //java 版本
+    implementation 'com.github.yechaoa.YUtils:yutils:3.1.1'
+
+    //kotlin && java 版本
+    implementation 'com.github.yechaoa:YUtils:3.1.1'
 }
 ```
 
