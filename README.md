@@ -39,7 +39,7 @@ dependencies {
 ```
 //初始化
 YUtils.init(this);
-//设置打印开关
+//设置打印开关（可选，默认false）
 LogUtil.setIsLog(true);
 ```
 
