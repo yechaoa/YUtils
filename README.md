@@ -9,9 +9,9 @@
 简化了部分util原有的调用方式，属于兼容更新。
 
 ## 3.0.0 版本更新
-- 3.0.0新增了`kotlin`版本，除了调用方式遵循kotlin的语法之外，类名的区别在于添加了后缀`Kt`，比如`YUtilsKt`，其他以此类推；
-- 此外，java版本和kotlin版本都删除了`ExitUtils`
-- kotlin版本没有`GsonUtil`
+- 3.0.0新增了`kotlin`版本，区别在于添加了类名后缀`Kt`，比如`YUtilsKt`，其他以此类推；
+- 此外，java版本和kotlin版本都删除了`ExitUtils`；
+- kotlin版本没有`GsonUtil`；
 
 ### How to use
 
