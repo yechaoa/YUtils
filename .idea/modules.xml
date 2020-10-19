@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AndroidProject-YUtils.iml" filepath="$PROJECT_DIR$/.idea/modules/AndroidProject-YUtils.iml" group="YUtils" />
       <module fileurl="file://$PROJECT_DIR$/YUtils.iml" filepath="$PROJECT_DIR$/YUtils.iml" group="YUtils" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/YUtils-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/YUtils-app.iml" group="YUtils/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/yutils/YUtils-yutils.iml" filepath="$PROJECT_DIR$/.idea/modules/yutils/YUtils-yutils.iml" group="YUtils/yutils" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/yutilskt/YUtils-yutilskt.iml" filepath="$PROJECT_DIR$/.idea/modules/yutilskt/YUtils-yutilskt.iml" group="YUtils/yutilskt" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="YUtils/app" />
       <module fileurl="file://$PROJECT_DIR$/yutils/yutils.iml" filepath="$PROJECT_DIR$/yutils/yutils.iml" group="YUtils/yutils" />
       <module fileurl="file://$PROJECT_DIR$/yutilskt/yutilskt.iml" filepath="$PROJECT_DIR$/yutilskt/yutilskt.iml" group="YUtils/yutilskt" />

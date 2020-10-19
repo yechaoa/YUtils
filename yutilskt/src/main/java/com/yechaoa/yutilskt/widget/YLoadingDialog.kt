@@ -13,36 +13,18 @@ import com.yechaoa.yutilskt.R
  * GitHub : https://github.com/yechaoa
  * CSDN : http://blog.csdn.net/yechaoa
  */
-class YLoadingDialog private constructor(context: Context, theme: Int) : Dialog(context, theme) {
+class YLoadingDialog constructor(context: Context, msg: String, cancelable: Boolean = true, theme: Int = R.style.yLoadingDialog) : Dialog(context, theme) {
 
-    companion object {
-
-        private lateinit var mDialog: YLoadingDialog
-
-        fun buildDialog(context: Context, msg: String): YLoadingDialog {
-            mDialog = YLoadingDialog(context, R.style.yLoadingDialog)
-            mDialog.setContentView(R.layout.dialog_y_loading)
-            mDialog.setCancelable(true)
-            mDialog.setCanceledOnTouchOutside(false)
-            mDialog.window.attributes.gravity = Gravity.CENTER
-            val lp = mDialog.window.attributes
-            lp.dimAmount = 0.2f
-            mDialog.window.attributes = lp
-            val tvTitle = mDialog.findViewById<TextView>(R.id.tv_y_loading)
-            tvTitle.text = msg
-            return mDialog
-        }
+    init {
+        setContentView(R.layout.dialog_y_loading)
+        setCancelable(cancelable)
+        setCanceledOnTouchOutside(cancelable)
+        window?.attributes?.gravity = Gravity.CENTER
+        val lp = window?.attributes
+        lp?.dimAmount = 0.2f
+        window?.attributes = lp
+        val tvTitle = findViewById<TextView>(R.id.tv_y_loading)
+        tvTitle?.text = msg
     }
 
-    //显示加载框
-    fun showLoading() {
-        super.show()
-        mDialog.show()
-    }
-
-    //关闭加载框
-    fun hideLoading() {
-        super.dismiss()
-        mDialog.dismiss()
-    }
 }

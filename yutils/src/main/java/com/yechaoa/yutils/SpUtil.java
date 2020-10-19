@@ -16,7 +16,7 @@ import java.util.Set;
 public class SpUtil {
 
     private static final String FILE_NAME = "config";
-    private static SharedPreferences sp = YUtils.getApplication().getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
+    private static SharedPreferences sp = YUtils.getApp().getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
 
     /**
      * String

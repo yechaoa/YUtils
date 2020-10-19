@@ -13,6 +13,10 @@ object LogUtilKt {
     private var TAG = "LogUtilKt"
     private var IS_LOG = false
     private const val MAX_LENGTH = 4000
+
+    /**
+     * 设置是否开启打印
+     */
     fun setIsLog(isLog: Boolean) {
         IS_LOG = isLog
     }

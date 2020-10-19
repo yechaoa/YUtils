@@ -8,7 +8,6 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -39,11 +38,30 @@ public class YUtils {
     private static ProgressDialog progressDialog;
     private static Application mApplicationContext;
 
+    /**
+     * 使用init()即可
+     */
+    @Deprecated
     public static void initialize(Application app) {
         mApplicationContext = app;
+        app.registerActivityLifecycleCallbacks(ActivityUtil.getActivityLifecycleCallbacks());
     }
 
+
+    public static void init(Application app) {
+        mApplicationContext = app;
+        app.registerActivityLifecycleCallbacks(ActivityUtil.getActivityLifecycleCallbacks());
+    }
+
+    /**
+     * 使用getApp()即可
+     */
+    @Deprecated
     public static Application getApplication() {
+        return mApplicationContext;
+    }
+
+    public static Application getApp() {
         return mApplicationContext;
     }
 
@@ -91,6 +109,17 @@ public class YUtils {
         }
     }
 
+    /**
+     * loading是否显示，需在showLoading()之后调用，否则为false
+     */
+    public static boolean loadingIsShowing() {
+        if (progressDialog == null) {
+            return false;
+        } else {
+            return progressDialog.isShowing();
+        }
+    }
+
 
     /**
      * 根据时间休眠然后关闭当前页面
@@ -131,7 +160,7 @@ public class YUtils {
      */
     public static int getVersionCode() {
         try {
-            PackageManager packageManager = YUtils.getApplication().getPackageManager();
+            PackageManager packageManager = YUtils.getApp().getPackageManager();
             PackageInfo packageInfo = packageManager.getPackageInfo(YUtils.getApplication().getPackageName(), 0);
             return packageInfo.versionCode;
         } catch (PackageManager.NameNotFoundException e) {
@@ -144,12 +173,12 @@ public class YUtils {
     /**
      * 检验手机号
      */
-    public static boolean checkPhoneNumber(String mobiles) {
+    public static boolean checkPhoneNumber(String number) {
         Pattern p = null;
         Matcher m = null;
         boolean b = false;
         p = Pattern.compile("^[1][3,4,5,6,7,8,9][0-9]{9}$");
-        m = p.matcher(mobiles);
+        m = p.matcher(number);
         b = m.matches();
         return b;
     }
@@ -175,7 +204,7 @@ public class YUtils {
      * dp2px
      */
     public static int dp2px(float dp) {
-        float density = YUtils.getApplication().getResources().getDisplayMetrics().density;
+        float density = YUtils.getApp().getResources().getDisplayMetrics().density;
         return (int) (dp * density + 0.5f);
     }
 
@@ -183,7 +212,7 @@ public class YUtils {
      * px2dp
      */
     public static float px2dp(int px) {
-        float density = YUtils.getApplication().getResources().getDisplayMetrics().density;
+        float density = YUtils.getApp().getResources().getDisplayMetrics().density;
         return px / density;
     }
 
@@ -192,19 +221,14 @@ public class YUtils {
      * 复制文本到粘贴板
      */
     public static void copyToClipboard(String text) {
-        if (Build.VERSION.SDK_INT >= 11) {
-            ClipboardManager cbm = (ClipboardManager) YUtils.getApplication().getSystemService(Activity.CLIPBOARD_SERVICE);
-            cbm.setPrimaryClip(ClipData.newPlainText(YUtils.getApplication().getPackageName(), text));
-        } else {
-            android.text.ClipboardManager cbm = (android.text.ClipboardManager) YUtils.getApplication().getSystemService(Activity.CLIPBOARD_SERVICE);
-            cbm.setText(text);
-        }
+        ClipboardManager cm = (ClipboardManager) YUtils.getApp().getSystemService(Activity.CLIPBOARD_SERVICE);
+        cm.setPrimaryClip(ClipData.newPlainText(YUtils.getApp().getPackageName(), text));
     }
 
     /**
      * 字体高亮
      */
-    public static View Foreground(View view, int color, int start, int end) {
+    public static View foreground(View view, int color, int start, int end) {
         if (view instanceof Button) {
             Button btn = (Button) view;
             // 获取文字
@@ -224,13 +248,19 @@ public class YUtils {
     }
 
     /**
+     * 弹出软键盘
+     */
+    public static void showSoftKeyboard(View view) {
+        InputMethodManager inputManger = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManger.showSoftInput(view, InputMethodManager.SHOW_FORCED);
+    }
+
+    /**
      * 关闭软键盘
      */
     public static void closeSoftKeyboard() {
         InputMethodManager inputManger = (InputMethodManager) ActivityUtil.getCurrentActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (inputManger != null) {
-            inputManger.hideSoftInputFromWindow(ActivityUtil.getCurrentActivity().getWindow().getDecorView().getWindowToken(), 0);
-        }
+        inputManger.hideSoftInputFromWindow(ActivityUtil.getCurrentActivity().getWindow().getDecorView().getWindowToken(), 0);
     }
 
 }

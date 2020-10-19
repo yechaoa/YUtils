@@ -6,7 +6,6 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.pm.PackageManager
-import android.os.Build
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
@@ -34,11 +33,23 @@ object YUtilsKt {
     private var mApplicationContext: Application? = null
     private var yLoadingDialog: YLoadingDialog? = null
 
+    @Deprecated("简化调用，使用init(app)即可", ReplaceWith("YUtilsKt.init(app)"))
     fun initialize(app: Application?) {
         mApplicationContext = app
+        app!!.registerActivityLifecycleCallbacks(ActivityUtilKt.activityLifecycleCallbacks)
     }
 
+    fun init(app: Application?) {
+        mApplicationContext = app
+        app!!.registerActivityLifecycleCallbacks(ActivityUtilKt.activityLifecycleCallbacks)
+    }
+
+    @Deprecated("简化调用，使用getApp()即可", ReplaceWith("YUtilsKt.getApp()"))
     fun getApplication(): Application? {
+        return mApplicationContext
+    }
+
+    fun getApp(): Application? {
         return mApplicationContext
     }
 
@@ -63,17 +74,25 @@ object YUtilsKt {
     /**
      * Loading加载框
      */
-    fun showLoading(activity: Activity, msg: String) {
-        yLoadingDialog = YLoadingDialog.buildDialog(activity, msg)
-        yLoadingDialog!!.showLoading()
+    fun showLoading(activity: Activity, msg: String, cancelable: Boolean = true) {
+        yLoadingDialog = YLoadingDialog(activity, msg, cancelable)
+        yLoadingDialog?.show()
     }
 
     /**
      * dismissLoading
      */
     fun hideLoading() {
-        yLoadingDialog?.hideLoading()
+        if (null != yLoadingDialog && yLoadingDialog?.isShowing!!) {
+            yLoadingDialog?.dismiss()
+            yLoadingDialog = null
+        }
     }
+
+    /**
+     * loading是否显示，需在showLoading()之后调用，否则为null
+     */
+    fun loadingIsShowing(): Boolean? = yLoadingDialog?.isShowing
 
     /**
      * 根据时间休眠然后关闭当前页面
@@ -98,8 +117,8 @@ object YUtilsKt {
      */
     fun getVersionName(): String? {
         return try {
-            val packageManager = getApplication()!!.packageManager
-            val packageInfo = packageManager.getPackageInfo(getApplication()!!.packageName, 0)
+            val packageManager = getApp()!!.packageManager
+            val packageInfo = packageManager.getPackageInfo(getApp()!!.packageName, 0)
             packageInfo.versionName
         } catch (e: PackageManager.NameNotFoundException) {
             e.printStackTrace()
@@ -112,8 +131,8 @@ object YUtilsKt {
      */
     fun getVersionCode(): Int {
         return try {
-            val packageManager = getApplication()!!.packageManager
-            val packageInfo = packageManager.getPackageInfo(getApplication()!!.packageName, 0)
+            val packageManager = getApp()!!.packageManager
+            val packageInfo = packageManager.getPackageInfo(getApp()!!.packageName, 0)
             packageInfo.versionCode
         } catch (e: PackageManager.NameNotFoundException) {
             e.printStackTrace()
@@ -124,12 +143,12 @@ object YUtilsKt {
     /**
      * 检验手机号
      */
-    fun checkPhoneNumber(mobiles: String?): Boolean {
+    fun checkPhoneNumber(number: String?): Boolean {
         var p: Pattern? = null
         var m: Matcher? = null
         var b = false
         p = Pattern.compile("^[1][3,4,5,6,7,8,9][0-9]{9}$")
-        m = p.matcher(mobiles)
+        m = p.matcher(number)
         b = m.matches()
         return b
     }
@@ -153,7 +172,7 @@ object YUtilsKt {
      * dp2px
      */
     fun dp2px(dp: Float): Int {
-        val density = getApplication()!!.resources.displayMetrics.density
+        val density = getApp()!!.resources.displayMetrics.density
         return (dp * density + 0.5f).toInt()
     }
 
@@ -161,7 +180,7 @@ object YUtilsKt {
      * px2dp
      */
     fun px2dp(px: Int): Float {
-        val density = getApplication()!!.resources.displayMetrics.density
+        val density = getApp()!!.resources.displayMetrics.density
         return px / density
     }
 
@@ -169,19 +188,14 @@ object YUtilsKt {
      * 复制文本到粘贴板
      */
     fun copyToClipboard(text: String?) {
-        if (Build.VERSION.SDK_INT >= 11) {
-            val cbm = getApplication()!!.getSystemService(Activity.CLIPBOARD_SERVICE) as ClipboardManager
-            cbm.primaryClip = ClipData.newPlainText(getApplication()!!.packageName, text)
-        } else {
-            val cbm = getApplication()!!.getSystemService(Activity.CLIPBOARD_SERVICE) as android.text.ClipboardManager
-            cbm.text = text
-        }
+        val cm = getApp()!!.getSystemService(Activity.CLIPBOARD_SERVICE) as ClipboardManager
+        cm.primaryClip = ClipData.newPlainText(getApp()!!.packageName, text)
     }
 
     /**
      * 字体高亮
      */
-    fun Foreground(view: View?, color: Int, start: Int, end: Int): View? {
+    fun foreground(view: View?, color: Int, start: Int, end: Int): View? {
         if (view is Button) {
             val btn = view
             // 获取文字
@@ -201,11 +215,20 @@ object YUtilsKt {
     }
 
     /**
+     * 弹出软键盘
+     */
+    fun showSoftKeyboard(view: View) {
+        val inputManger = view.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManger.showSoftInput(view, InputMethodManager.SHOW_FORCED)
+    }
+
+    /**
      * 关闭软键盘
      */
     fun closeSoftKeyboard() {
         val inputManger = ActivityUtilKt.currentActivity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputManger.hideSoftInputFromWindow(ActivityUtilKt.currentActivity!!.window.decorView.windowToken, 0)
     }
+
 
 }

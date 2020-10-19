@@ -13,7 +13,7 @@ import android.content.SharedPreferences
  */
 object SpUtilKt {
     private const val FILE_NAME = "config"
-    private val sp: SharedPreferences = YUtilsKt.getApplication()!!.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE)
+    private val sp: SharedPreferences = YUtilsKt.getApp()!!.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE)
 
     /**
      * String

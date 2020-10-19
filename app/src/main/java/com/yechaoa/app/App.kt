@@ -13,9 +13,8 @@ class App : Application(){
 
     override fun onCreate() {
         super.onCreate()
-        YUtilsKt.initialize(this)
+        YUtilsKt.init(this)
         LogUtilKt.setIsLog(true)
-        registerActivityLifecycleCallbacks(ActivityUtilKt.activityLifecycleCallbacks)
     }
 
 }

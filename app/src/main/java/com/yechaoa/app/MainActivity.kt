@@ -3,9 +3,7 @@ package com.yechaoa.app
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
-import com.yechaoa.yutilskt.LogUtilKt
-import com.yechaoa.yutilskt.SpUtilKt
-import com.yechaoa.yutilskt.YUtilsKt
+import com.yechaoa.yutilskt.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -36,5 +34,16 @@ class MainActivity : AppCompatActivity() {
             LogUtilKt.i(stringSet.toString())
         }
 
+        showLoading.setOnClickListener {
+            YUtilsKt.showLoading(this, "test")
+            LogUtilKt.i("" + YUtilsKt.loadingIsShowing())
+        }
+
+        hideLoading.setOnClickListener {
+            ToastUtilKt.show("取消loading")
+            YUtilsKt.hideLoading()
+            LogUtilKt.i("" + YUtilsKt.loadingIsShowing())
+            LogUtilKt.i("" + ActivityUtilKt.currentActivityName)
+        }
     }
 }

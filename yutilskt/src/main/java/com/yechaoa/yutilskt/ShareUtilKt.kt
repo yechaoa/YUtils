@@ -13,6 +13,9 @@ import com.yechaoa.yutilskt.ActivityUtilKt.currentActivity
  */
 object ShareUtilKt {
 
+    /**
+     * 调用系统分享图片
+     */
     fun shareImage(title: String?, uri: Uri?) {
         val intent = Intent()
         intent.action = Intent.ACTION_SEND
@@ -21,6 +24,9 @@ object ShareUtilKt {
         currentActivity!!.startActivity(Intent.createChooser(intent, title))
     }
 
+    /**
+     * 调用系统分享文字
+     */
     fun shareText(title: String?, text: String?) {
         val intent = Intent()
         intent.action = Intent.ACTION_SEND

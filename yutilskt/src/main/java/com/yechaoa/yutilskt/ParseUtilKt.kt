@@ -19,7 +19,10 @@ object ParseUtilKt {
      * "info": null
      * }
      */
-//解析Code
+
+    /**
+     * 解析Code
+     */
     fun parseCode(response: String?): String {
         var code = ""
         try {
@@ -31,7 +34,9 @@ object ParseUtilKt {
         return code
     }
 
-    //解析Flag
+    /**
+     * 解析Flag
+     */
     fun parseFlag(response: String?): Boolean {
         var flag = false
         try {
@@ -43,7 +48,9 @@ object ParseUtilKt {
         return flag
     }
 
-    //解析data
+    /**
+     * 解析data
+     */
     fun parseData(response: String?): String {
         var data = ""
         try {
@@ -55,7 +62,9 @@ object ParseUtilKt {
         return data
     }
 
-    //解析info
+    /**
+     * 解析info
+     */
     fun parseInfo(response: String?): String {
         var info = ""
         try {
@@ -67,7 +76,9 @@ object ParseUtilKt {
         return info
     }
 
-    //根据key值解析，只支持json中的一级字段
+    /**
+     * 根据key值解析，只支持json中的一级字段
+     */
     fun parseByKey(response: String?, key: String?): String {
         var value = ""
         try {

@@ -14,12 +14,22 @@ import android.widget.Toast
  */
 object ToastUtilKt {
     private var toast: Toast? = null
+
     /**
      * showToast 底部显示（默认）
      *
      * @param msg 需要显示的参数
      */
+    @Deprecated("简化调用，使用show(msg)即可", ReplaceWith("ToastUtilKt.show(msg)"))
     fun showToast(msg: String) {
+        if ("main" == Thread.currentThread().name) {
+            createToast(msg)
+        } else {
+            ActivityUtilKt.currentActivity?.runOnUiThread { createToast(msg) }
+        }
+    }
+
+    fun show(msg: String) {
         if ("main" == Thread.currentThread().name) {
             createToast(msg)
         } else {
@@ -34,7 +44,7 @@ object ToastUtilKt {
      */
     private fun createToast(msg: String) {
         if (toast == null) {
-            toast = Toast.makeText(YUtilsKt.getApplication(), msg, Toast.LENGTH_SHORT)
+            toast = Toast.makeText(YUtilsKt.getApp(), msg, Toast.LENGTH_SHORT)
         } else {
             toast!!.setText(msg)
         }
@@ -49,7 +59,16 @@ object ToastUtilKt {
      *
      * @param msg 需要显示的参数
      */
+    @Deprecated("简化调用，使用showCenter(msg)即可", ReplaceWith("ToastUtilKt.showCenter(msg)"))
     fun showCenterToast(msg: String) {
+        if ("main" == Thread.currentThread().name) {
+            createCenterToast(msg)
+        } else {
+            ActivityUtilKt.currentActivity!!.runOnUiThread { createCenterToast(msg) }
+        }
+    }
+
+    fun showCenter(msg: String) {
         if ("main" == Thread.currentThread().name) {
             createCenterToast(msg)
         } else {
@@ -80,7 +99,14 @@ object ToastUtilKt {
      * onDestroy时调用，或者onPause
      * 当前页面finish之后在下一个页面不会显示
      */
+    @Deprecated("简化调用，使用cancel()即可", ReplaceWith("ToastUtilKt.cancel()"))
     fun cancelToast() {
+        if (toast != null) {
+            toast!!.cancel()
+        }
+    }
+
+    fun cancel() {
         if (toast != null) {
             toast!!.cancel()
         }

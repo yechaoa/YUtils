@@ -18,11 +18,30 @@ public class ToastUtil {
     private static Toast toast;
 
     /**
+     * showToast 底部显示（默认） 直接用show()即可
+     *
+     * @param msg 需要显示的参数
+     */
+    @Deprecated
+    public static void showToast(final String msg) {
+        if ("main".equals(Thread.currentThread().getName())) {
+            createToast(msg);
+        } else {
+            ActivityUtil.getCurrentActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    createToast(msg);
+                }
+            });
+        }
+    }
+
+    /**
      * showToast 底部显示（默认）
      *
      * @param msg 需要显示的参数
      */
-    public static void showToast(final String msg) {
+    public static void show(final String msg) {
         if ("main".equals(Thread.currentThread().getName())) {
             createToast(msg);
         } else {
@@ -42,7 +61,7 @@ public class ToastUtil {
      */
     private static void createToast(String msg) {
         if (toast == null) {
-            toast = Toast.makeText(YUtils.getApplication(), msg, Toast.LENGTH_SHORT);
+            toast = Toast.makeText(YUtils.getApp(), msg, Toast.LENGTH_SHORT);
         } else {
             toast.setText(msg);
         }
@@ -53,11 +72,30 @@ public class ToastUtil {
     }
 
     /**
+     * showCenterToast 居中显示  直接用showCenter()即可
+     *
+     * @param msg 需要显示的参数
+     */
+    @Deprecated
+    public static void showCenterToast(final String msg) {
+        if ("main".equals(Thread.currentThread().getName())) {
+            createCenterToast(msg);
+        } else {
+            ActivityUtil.getCurrentActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    createCenterToast(msg);
+                }
+            });
+        }
+    }
+
+    /**
      * showCenterToast 居中显示
      *
      * @param msg 需要显示的参数
      */
-    public static void showCenterToast(final String msg) {
+    public static void showCenter(final String msg) {
         if ("main".equals(Thread.currentThread().getName())) {
             createCenterToast(msg);
         } else {
@@ -77,7 +115,7 @@ public class ToastUtil {
      */
     private static void createCenterToast(String msg) {
         if (toast == null) {
-            toast = Toast.makeText(YUtils.getApplication(), msg, Toast.LENGTH_SHORT);
+            toast = Toast.makeText(YUtils.getApp(), msg, Toast.LENGTH_SHORT);
         } else {
             toast.setText(msg);
         }
@@ -89,11 +127,23 @@ public class ToastUtil {
     }
 
     /**
+     * 取消Toast 直接用cancel()即可
+     * onDestroy时调用，或者onPause
+     * 当前页面finish之后在下一个页面不会显示
+     */
+    @Deprecated
+    public static void cancelToast() {
+        if (toast != null) {
+            toast.cancel();
+        }
+    }
+
+    /**
      * 取消Toast
      * onDestroy时调用，或者onPause
      * 当前页面finish之后在下一个页面不会显示
      */
-    public static void cancelToast() {
+    public static void cancel() {
         if (toast != null) {
             toast.cancel();
         }

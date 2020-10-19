@@ -34,4 +34,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
+    <Button
+        android:id="@+id/showLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="showLoading"
+        app:layout_constraintEnd_toEndOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <Button
+        android:id="@+id/hideLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="hideLoading"
+        app:layout_constraintEnd_toEndOf="@+id/showLoading"
+        app:layout_constraintStart_toStartOf="@+id/showLoading"
+        app:layout_constraintTop_toBottomOf="@+id/showLoading" />
+
 </android.support.constraint.ConstraintLayout>
