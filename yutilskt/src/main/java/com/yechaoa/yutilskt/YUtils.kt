@@ -28,7 +28,7 @@ import java.util.regex.Pattern
  * GitHub : https://github.com/yechaoa
  * CSDN : http://blog.csdn.net/yechaoa
  */
-object YUtilsKt {
+object YUtils {
 
     private var mApplicationContext: Application? = null
     private var yLoadingDialog: YLoadingDialog? = null
@@ -36,12 +36,12 @@ object YUtilsKt {
     @Deprecated("简化调用，使用init(app)即可", ReplaceWith("YUtilsKt.init(app)"))
     fun initialize(app: Application?) {
         mApplicationContext = app
-        app!!.registerActivityLifecycleCallbacks(ActivityUtilKt.activityLifecycleCallbacks)
+        app!!.registerActivityLifecycleCallbacks(ActivityUtil.activityLifecycleCallbacks)
     }
 
     fun init(app: Application?) {
         mApplicationContext = app
-        app!!.registerActivityLifecycleCallbacks(ActivityUtilKt.activityLifecycleCallbacks)
+        app!!.registerActivityLifecycleCallbacks(ActivityUtil.activityLifecycleCallbacks)
     }
 
     @Deprecated("简化调用，使用getApp()即可", ReplaceWith("YUtilsKt.getApp()"))
@@ -58,7 +58,7 @@ object YUtilsKt {
      */
     fun getScreenWidth(): Int {
         val dm = DisplayMetrics()
-        ActivityUtilKt.currentActivity!!.windowManager.defaultDisplay.getMetrics(dm)
+        ActivityUtil.currentActivity!!.windowManager.defaultDisplay.getMetrics(dm)
         return dm.widthPixels
     }
 
@@ -67,7 +67,7 @@ object YUtilsKt {
      */
     fun getScreenHeight(): Int {
         val dm = DisplayMetrics()
-        ActivityUtilKt.currentActivity!!.windowManager.defaultDisplay.getMetrics(dm)
+        ActivityUtil.currentActivity!!.windowManager.defaultDisplay.getMetrics(dm)
         return dm.heightPixels
     }
 
@@ -104,7 +104,7 @@ object YUtilsKt {
             override fun run() {
                 try {
                     sleep(millis)
-                    ActivityUtilKt.currentActivity?.finish()
+                    ActivityUtil.currentActivity?.finish()
                 } catch (e: InterruptedException) {
                     e.printStackTrace()
                 }
@@ -226,8 +226,8 @@ object YUtilsKt {
      * 关闭软键盘
      */
     fun closeSoftKeyboard() {
-        val inputManger = ActivityUtilKt.currentActivity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputManger.hideSoftInputFromWindow(ActivityUtilKt.currentActivity!!.window.decorView.windowToken, 0)
+        val inputManger = ActivityUtil.currentActivity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManger.hideSoftInputFromWindow(ActivityUtil.currentActivity!!.window.decorView.windowToken, 0)
     }
 
 

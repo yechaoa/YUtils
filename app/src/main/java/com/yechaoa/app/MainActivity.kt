@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         findViewById<TextView>(R.id.text_view).setOnClickListener {
-            YUtilsKt.showLoading(this, "加载中")
+            YUtils.showLoading(this, "加载中")
         }
 
 
@@ -26,24 +26,24 @@ class MainActivity : AppCompatActivity() {
         }
 
         button.setOnClickListener {
-            SpUtilKt.setStringSet("testStringSet", set)
+            SpUtil.setStringSet("testStringSet", set)
         }
 
         button2.setOnClickListener {
-            val stringSet = SpUtilKt.getStringSet("testStringSet")
-            LogUtilKt.i(stringSet.toString())
+            val stringSet = SpUtil.getStringSet("testStringSet")
+            LogUtil.i(stringSet.toString())
         }
 
         showLoading.setOnClickListener {
-            YUtilsKt.showLoading(this, "test")
-            LogUtilKt.i("" + YUtilsKt.loadingIsShowing())
+            YUtils.showLoading(this, "test")
+            LogUtil.i("" + YUtils.loadingIsShowing())
         }
 
         hideLoading.setOnClickListener {
-            ToastUtilKt.show("取消loading")
-            YUtilsKt.hideLoading()
-            LogUtilKt.i("" + YUtilsKt.loadingIsShowing())
-            LogUtilKt.i("" + ActivityUtilKt.currentActivityName)
+            ToastUtil.show("取消loading")
+            YUtils.hideLoading()
+            LogUtil.i("" + YUtils.loadingIsShowing())
+            LogUtil.i("" + ActivityUtil.currentActivityName)
         }
     }
 }

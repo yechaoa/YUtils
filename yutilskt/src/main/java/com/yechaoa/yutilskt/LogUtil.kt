@@ -9,7 +9,7 @@ import android.util.Log
  * GitHub : https://github.com/yechaoa
  * CSDN : http://blog.csdn.net/yechaoa
  */
-object LogUtilKt {
+object LogUtil {
     private var TAG = "LogUtilKt"
     private var IS_LOG = false
     private const val MAX_LENGTH = 4000

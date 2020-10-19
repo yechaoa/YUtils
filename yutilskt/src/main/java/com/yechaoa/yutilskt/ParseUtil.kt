@@ -10,7 +10,7 @@ import org.json.JSONObject
  * GitHub : https://github.com/yechaoa
  * CSDN : http://blog.csdn.net/yechaoa
  */
-object ParseUtilKt {
+object ParseUtil {
     /**
      * {
      * "code": "0",

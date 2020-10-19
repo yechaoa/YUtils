@@ -12,7 +12,7 @@ import android.widget.Toast
  * GitHub : https://github.com/yechaoa
  * CSDN : http://blog.csdn.net/yechaoa
  */
-object ToastUtilKt {
+object ToastUtil {
     private var toast: Toast? = null
 
     /**
@@ -25,7 +25,7 @@ object ToastUtilKt {
         if ("main" == Thread.currentThread().name) {
             createToast(msg)
         } else {
-            ActivityUtilKt.currentActivity?.runOnUiThread { createToast(msg) }
+            ActivityUtil.currentActivity?.runOnUiThread { createToast(msg) }
         }
     }
 
@@ -33,7 +33,7 @@ object ToastUtilKt {
         if ("main" == Thread.currentThread().name) {
             createToast(msg)
         } else {
-            ActivityUtilKt.currentActivity?.runOnUiThread { createToast(msg) }
+            ActivityUtil.currentActivity?.runOnUiThread { createToast(msg) }
         }
     }
 
@@ -44,7 +44,7 @@ object ToastUtilKt {
      */
     private fun createToast(msg: String) {
         if (toast == null) {
-            toast = Toast.makeText(YUtilsKt.getApp(), msg, Toast.LENGTH_SHORT)
+            toast = Toast.makeText(YUtils.getApp(), msg, Toast.LENGTH_SHORT)
         } else {
             toast!!.setText(msg)
         }
@@ -64,7 +64,7 @@ object ToastUtilKt {
         if ("main" == Thread.currentThread().name) {
             createCenterToast(msg)
         } else {
-            ActivityUtilKt.currentActivity!!.runOnUiThread { createCenterToast(msg) }
+            ActivityUtil.currentActivity!!.runOnUiThread { createCenterToast(msg) }
         }
     }
 
@@ -72,7 +72,7 @@ object ToastUtilKt {
         if ("main" == Thread.currentThread().name) {
             createCenterToast(msg)
         } else {
-            ActivityUtilKt.currentActivity!!.runOnUiThread { createCenterToast(msg) }
+            ActivityUtil.currentActivity!!.runOnUiThread { createCenterToast(msg) }
         }
     }
 
@@ -83,7 +83,7 @@ object ToastUtilKt {
      */
     private fun createCenterToast(msg: String) {
         if (toast == null) {
-            toast = Toast.makeText(YUtilsKt.getApplication(), msg, Toast.LENGTH_SHORT)
+            toast = Toast.makeText(YUtils.getApplication(), msg, Toast.LENGTH_SHORT)
         } else {
             toast!!.setText(msg)
         }

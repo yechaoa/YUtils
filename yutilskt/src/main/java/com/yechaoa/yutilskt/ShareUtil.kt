@@ -2,7 +2,7 @@ package com.yechaoa.yutilskt
 
 import android.content.Intent
 import android.net.Uri
-import com.yechaoa.yutilskt.ActivityUtilKt.currentActivity
+import com.yechaoa.yutilskt.ActivityUtil.currentActivity
 
 /**
  * Created by yechao on 2020/1/7.
@@ -11,7 +11,7 @@ import com.yechaoa.yutilskt.ActivityUtilKt.currentActivity
  * GitHub : https://github.com/yechaoa
  * CSDN : http://blog.csdn.net/yechaoa
  */
-object ShareUtilKt {
+object ShareUtil {
 
     /**
      * 调用系统分享图片

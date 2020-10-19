@@ -13,7 +13,7 @@ import java.util.*
  * GitHub : https://github.com/yechaoa
  * CSDN : http://blog.csdn.net/yechaoa
  */
-object ActivityUtilKt {
+object ActivityUtil {
     //Stack(栈)，后进先出
     private val activityStack = Stack<Activity>()
     //Activity的生命周期回调，要求API14+（Android 4.0+）
