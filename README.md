@@ -5,7 +5,10 @@
 ![](https://img.shields.io/hexpm/l/plug.svg)
 ![](https://img.shields.io/badge/be%20happy-%E5%BC%80%E5%BF%83%E5%B0%B1%E5%A5%BD-green.svg)
 
-## 3.1.1 版本更新(2020-10-19)
+## 3.1.2 版本更新(2020-10-22)
+优化。
+
+## 3.1.1
 优化引用方式，可以kotlin和java分开引用，也可以一起引用。
 
 ## 3.1.0
@@ -32,13 +35,13 @@ allprojects {
 ```
 dependencies {
     //kotlin 版本
-    implementation 'com.github.yechaoa.YUtils:yutilskt:3.1.1'
+    implementation 'com.github.yechaoa.YUtils:yutilskt:3.1.2'
 
     //java 版本
-    implementation 'com.github.yechaoa.YUtils:yutils:3.1.1'
+    implementation 'com.github.yechaoa.YUtils:yutils:3.1.2'
 
     //kotlin && java 版本
-    implementation 'com.github.yechaoa:YUtils:3.1.1'
+    implementation 'com.github.yechaoa:YUtils:3.1.2'
 }
 ```
 
