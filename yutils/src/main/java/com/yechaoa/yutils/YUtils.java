@@ -36,20 +36,20 @@ public class YUtils {
 
     private static Toast toast;
     private static ProgressDialog progressDialog;
-    private static Application mApplicationContext;
+    private static Application mApp;
 
     /**
      * 使用init()即可
      */
     @Deprecated
     public static void initialize(Application app) {
-        mApplicationContext = app;
+        mApp = app;
         app.registerActivityLifecycleCallbacks(ActivityUtil.getActivityLifecycleCallbacks());
     }
 
 
     public static void init(Application app) {
-        mApplicationContext = app;
+        mApp = app;
         app.registerActivityLifecycleCallbacks(ActivityUtil.getActivityLifecycleCallbacks());
     }
 
@@ -58,11 +58,11 @@ public class YUtils {
      */
     @Deprecated
     public static Application getApplication() {
-        return mApplicationContext;
+        return mApp;
     }
 
     public static Application getApp() {
-        return mApplicationContext;
+        return mApp;
     }
 
     /**
@@ -146,8 +146,8 @@ public class YUtils {
      */
     public static String getVersionName() {
         try {
-            PackageManager packageManager = YUtils.getApplication().getPackageManager();
-            PackageInfo packageInfo = packageManager.getPackageInfo(YUtils.getApplication().getPackageName(), 0);
+            PackageManager packageManager = YUtils.getApp().getPackageManager();
+            PackageInfo packageInfo = packageManager.getPackageInfo(YUtils.getApp().getPackageName(), 0);
             return packageInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
@@ -161,7 +161,7 @@ public class YUtils {
     public static int getVersionCode() {
         try {
             PackageManager packageManager = YUtils.getApp().getPackageManager();
-            PackageInfo packageInfo = packageManager.getPackageInfo(YUtils.getApplication().getPackageName(), 0);
+            PackageInfo packageInfo = packageManager.getPackageInfo(YUtils.getApp().getPackageName(), 0);
             return packageInfo.versionCode;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();

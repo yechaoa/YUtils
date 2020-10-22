@@ -30,27 +30,27 @@ import java.util.regex.Pattern
  */
 object YUtils {
 
-    private var mApplicationContext: Application? = null
+    private lateinit var mApp: Application
     private var yLoadingDialog: YLoadingDialog? = null
 
     @Deprecated("简化调用，使用init(app)即可", ReplaceWith("YUtilsKt.init(app)"))
-    fun initialize(app: Application?) {
-        mApplicationContext = app
-        app!!.registerActivityLifecycleCallbacks(ActivityUtil.activityLifecycleCallbacks)
+    fun initialize(app: Application) {
+        mApp = app
+        app.registerActivityLifecycleCallbacks(ActivityUtil.activityLifecycleCallbacks)
     }
 
-    fun init(app: Application?) {
-        mApplicationContext = app
-        app!!.registerActivityLifecycleCallbacks(ActivityUtil.activityLifecycleCallbacks)
+    fun init(app: Application) {
+        mApp = app
+        app.registerActivityLifecycleCallbacks(ActivityUtil.activityLifecycleCallbacks)
     }
 
     @Deprecated("简化调用，使用getApp()即可", ReplaceWith("YUtilsKt.getApp()"))
-    fun getApplication(): Application? {
-        return mApplicationContext
+    fun getApplication(): Application {
+        return mApp
     }
 
-    fun getApp(): Application? {
-        return mApplicationContext
+    fun getApp(): Application {
+        return mApp
     }
 
     /**
@@ -117,8 +117,8 @@ object YUtils {
      */
     fun getVersionName(): String? {
         return try {
-            val packageManager = getApp()!!.packageManager
-            val packageInfo = packageManager.getPackageInfo(getApp()!!.packageName, 0)
+            val packageManager = getApp().packageManager
+            val packageInfo = packageManager.getPackageInfo(getApp().packageName, 0)
             packageInfo.versionName
         } catch (e: PackageManager.NameNotFoundException) {
             e.printStackTrace()
@@ -131,8 +131,8 @@ object YUtils {
      */
     fun getVersionCode(): Int {
         return try {
-            val packageManager = getApp()!!.packageManager
-            val packageInfo = packageManager.getPackageInfo(getApp()!!.packageName, 0)
+            val packageManager = getApp().packageManager
+            val packageInfo = packageManager.getPackageInfo(getApp().packageName, 0)
             packageInfo.versionCode
         } catch (e: PackageManager.NameNotFoundException) {
             e.printStackTrace()
@@ -172,7 +172,7 @@ object YUtils {
      * dp2px
      */
     fun dp2px(dp: Float): Int {
-        val density = getApp()!!.resources.displayMetrics.density
+        val density = getApp().resources.displayMetrics.density
         return (dp * density + 0.5f).toInt()
     }
 
@@ -180,7 +180,7 @@ object YUtils {
      * px2dp
      */
     fun px2dp(px: Int): Float {
-        val density = getApp()!!.resources.displayMetrics.density
+        val density = getApp().resources.displayMetrics.density
         return px / density
     }
 
@@ -188,8 +188,8 @@ object YUtils {
      * 复制文本到粘贴板
      */
     fun copyToClipboard(text: String?) {
-        val cm = getApp()!!.getSystemService(Activity.CLIPBOARD_SERVICE) as ClipboardManager
-        cm.primaryClip = ClipData.newPlainText(getApp()!!.packageName, text)
+        val cm = getApp().getSystemService(Activity.CLIPBOARD_SERVICE) as ClipboardManager
+        cm.primaryClip = ClipData.newPlainText(getApp().packageName, text)
     }
 
     /**
