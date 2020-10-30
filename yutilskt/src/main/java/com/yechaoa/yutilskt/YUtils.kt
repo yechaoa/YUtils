@@ -33,7 +33,7 @@ object YUtils {
     private lateinit var mApp: Application
     private var yLoadingDialog: YLoadingDialog? = null
 
-    @Deprecated("简化调用，使用init(app)即可", ReplaceWith("YUtilsKt.init(app)"))
+    @Deprecated("简化调用，使用init(app)即可", ReplaceWith("YUtils.init(app)"))
     fun initialize(app: Application) {
         mApp = app
         app.registerActivityLifecycleCallbacks(ActivityUtil.activityLifecycleCallbacks)
@@ -44,7 +44,7 @@ object YUtils {
         app.registerActivityLifecycleCallbacks(ActivityUtil.activityLifecycleCallbacks)
     }
 
-    @Deprecated("简化调用，使用getApp()即可", ReplaceWith("YUtilsKt.getApp()"))
+    @Deprecated("简化调用，使用getApp()即可", ReplaceWith("YUtils.getApp()"))
     fun getApplication(): Application {
         return mApp
     }
@@ -56,6 +56,7 @@ object YUtils {
     /**
      * 获取屏幕宽度
      */
+    @Deprecated("拆分处理，使用DisplayUtil.getScreenWidth()即可", ReplaceWith("DisplayUtil.getScreenWidth()"))
     fun getScreenWidth(): Int {
         val dm = DisplayMetrics()
         ActivityUtil.currentActivity!!.windowManager.defaultDisplay.getMetrics(dm)
@@ -65,6 +66,7 @@ object YUtils {
     /**
      * 获取屏幕高度
      */
+    @Deprecated("拆分处理，使用DisplayUtil.getScreenHeight()即可", ReplaceWith("DisplayUtil.getScreenHeight()"))
     fun getScreenHeight(): Int {
         val dm = DisplayMetrics()
         ActivityUtil.currentActivity!!.windowManager.defaultDisplay.getMetrics(dm)
@@ -171,6 +173,7 @@ object YUtils {
     /**
      * dp2px
      */
+    @Deprecated("拆分处理，使用DisplayUtil.dp2px()即可", ReplaceWith("DisplayUtil.dp2px(dp)"))
     fun dp2px(dp: Float): Int {
         val density = getApp().resources.displayMetrics.density
         return (dp * density + 0.5f).toInt()
@@ -179,6 +182,7 @@ object YUtils {
     /**
      * px2dp
      */
+    @Deprecated("拆分处理，使用DisplayUtil.px2dp()即可", ReplaceWith("DisplayUtil.px2dp(px)"))
     fun px2dp(px: Int): Float {
         val density = getApp().resources.displayMetrics.density
         return px / density

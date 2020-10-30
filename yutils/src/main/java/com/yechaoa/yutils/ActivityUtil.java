@@ -3,6 +3,7 @@ package com.yechaoa.yutils;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Application;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 
@@ -10,7 +11,7 @@ import java.util.Stack;
 
 /**
  * Created by yechao on 2017/9/11.
- * Describe : Activity管理  thanks jude95
+ * Describe : Activity管理
  * <p>
  * GitHub : https://github.com/yechaoa
  * CSDN : http://blog.csdn.net/yechaoa
@@ -23,6 +24,10 @@ public class ActivityUtil {
     private static Stack<Activity> activityStack = new Stack<>();
     //Activity的生命周期回调，要求API14+（Android 4.0+）
     private static final MyActivityLifecycleCallbacks instance = new MyActivityLifecycleCallbacks();
+
+    public static Application.ActivityLifecycleCallbacks getActivityLifecycleCallbacks() {
+        return instance;
+    }
 
     private static class MyActivityLifecycleCallbacks implements Application.ActivityLifecycleCallbacks {
 
@@ -63,9 +68,6 @@ public class ActivityUtil {
         }
     }
 
-    public static Application.ActivityLifecycleCallbacks getActivityLifecycleCallbacks() {
-        return instance;
-    }
 
     /**
      * 获得当前栈顶Activity
@@ -90,14 +92,44 @@ public class ActivityUtil {
     }
 
     /**
-     * 关闭当前Activity
+     * 启动一个Activity 无参
      */
+    public static void start(Class<?> targetActivity) {
+        Intent intent = new Intent(getCurrentActivity(), targetActivity);
+        getCurrentActivity().startActivity(intent);
+    }
+
+    /**
+     * 启动指定Activity，带Bundle参数，getIntent().get***Extra 即可获取参数
+     */
+    public static void start(Class<?> targetActivity, Bundle bundle) {
+        Intent intent = new Intent(getCurrentActivity(), targetActivity);
+        if (null != bundle) {
+            intent.putExtras(bundle);
+        }
+        getCurrentActivity().startActivity(intent);
+    }
+
+    /**
+     * 关闭指定Activity 简化调用，使用ActivityUtil.finish(activity)即可
+     */
+    @Deprecated
     public static void finishActivity(Activity activity) {
         if (activity != null) {
             activityStack.remove(activity);
             activity.finish();
         }
     }
+    /**
+     * 关闭指定Activity
+     */
+    public static void finish(Activity activity) {
+        if (activity != null) {
+            activityStack.remove(activity);
+            activity.finish();
+        }
+    }
+
     /**
      * 关闭所有Activity
      */
@@ -107,7 +139,7 @@ public class ActivityUtil {
             if (null == activity) {
                 break;
             }
-            finishActivity(activity);
+            finish(activity);
         }
     }
 
@@ -126,7 +158,7 @@ public class ActivityUtil {
                 }
                 continue;
             }
-            finishActivity(activity);
+            finish(activity);
             break;
         }
     }

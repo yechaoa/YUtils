@@ -2,13 +2,14 @@ package com.yechaoa.yutilskt
 
 import android.app.Activity
 import android.app.Application.ActivityLifecycleCallbacks
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import java.util.*
 
 /**
  * Created by yechao on 2020/1/7.
- * Describe : Activity管理  thanks jude95
+ * Describe : Activity管理
  *
  * GitHub : https://github.com/yechaoa
  * CSDN : http://blog.csdn.net/yechaoa
@@ -16,6 +17,7 @@ import java.util.*
 object ActivityUtil {
     //Stack(栈)，后进先出
     private val activityStack = Stack<Activity>()
+
     //Activity的生命周期回调，要求API14+（Android 4.0+）
     private val instance = MyActivityLifecycleCallbacks()
 
@@ -46,9 +48,29 @@ object ActivityUtil {
         }
 
     /**
-     * 关闭当前Activity
+     * 启动指定Activity 参数可选，intent.get***Extra 即可获取参数
      */
+    fun start(clazz: Class<out Activity>, bundle: Bundle = Bundle()) {
+        val intent = Intent(currentActivity, clazz)
+        intent.putExtras(bundle)
+        currentActivity?.startActivity(intent)
+    }
+
+    /**
+     * 关闭指定Activity
+     */
+    @Deprecated("简化调用，使用ActivityUtil.finish(activity)即可", ReplaceWith("ActivityUtil.finish(activity)"))
     fun finishActivity(activity: Activity?) {
+        if (activity != null) {
+            activityStack.remove(activity)
+            activity.finish()
+        }
+    }
+
+    /**
+     * 关闭指定Activity
+     */
+    fun finish(activity: Activity?) {
         if (activity != null) {
             activityStack.remove(activity)
             activity.finish()
@@ -61,7 +83,7 @@ object ActivityUtil {
     fun closeAllActivity() {
         while (true) {
             val activity = currentActivity ?: break
-            finishActivity(activity)
+            finish(activity)
         }
     }
 
@@ -77,7 +99,7 @@ object ActivityUtil {
                 }
                 continue
             }
-            finishActivity(activity)
+            finish(activity)
             break
         }
     }

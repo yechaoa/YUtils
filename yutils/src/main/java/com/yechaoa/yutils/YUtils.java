@@ -66,8 +66,9 @@ public class YUtils {
     }
 
     /**
-     * 获取屏幕宽度
+     * 获取屏幕宽度 改为DisplayUtil.getScreenWidth()
      */
+    @Deprecated
     public static int getScreenWidth() {
         DisplayMetrics dm = new DisplayMetrics();
         ActivityUtil.getCurrentActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -75,8 +76,9 @@ public class YUtils {
     }
 
     /**
-     * 获取屏幕高度
+     * 获取屏幕高度 改为DisplayUtil.getScreenHeight()
      */
+    @Deprecated
     public static int getScreenHeight() {
         DisplayMetrics dm = new DisplayMetrics();
         ActivityUtil.getCurrentActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -201,16 +203,18 @@ public class YUtils {
 
 
     /**
-     * dp2px
+     * dp2px 改为DisplayUtil.dp2px()
      */
+    @Deprecated
     public static int dp2px(float dp) {
         float density = YUtils.getApp().getResources().getDisplayMetrics().density;
         return (int) (dp * density + 0.5f);
     }
 
     /**
-     * px2dp
+     * px2dp 改为DisplayUtil.px2dp()
      */
+    @Deprecated
     public static float px2dp(int px) {
         float density = YUtils.getApp().getResources().getDisplayMetrics().density;
         return px / density;

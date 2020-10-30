@@ -45,5 +45,11 @@ class MainActivity : AppCompatActivity() {
             LogUtil.i("" + YUtils.loadingIsShowing())
             LogUtil.i("" + ActivityUtil.currentActivityName)
         }
+
+//        ActivityUtil.start(MainActivity::class.java)
+//        ActivityUtil.finish(this)
+
+        LogUtil.i("" + DisplayUtil.getStatusBarHeight() + "---" + DisplayUtil.getScreenHeight())
+        LogUtil.i("" + DisplayUtil.getActionBarHeight() + "---" + DisplayUtil.getNavBarHeight())
     }
 }
