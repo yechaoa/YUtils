@@ -5,19 +5,7 @@
 ![](https://img.shields.io/hexpm/l/plug.svg)
 ![](https://img.shields.io/badge/be%20happy-%E5%BC%80%E5%BF%83%E5%B0%B1%E5%A5%BD-green.svg)
 
-## 3.1.2 版本更新(2020-10-22)
-优化。
-
-## 3.1.1
-优化引用方式，可以kotlin和java分开引用，也可以一起引用。
-
-## 3.1.0
-简化了部分util原有的调用方式，属于兼容更新。
-
-### 3.0.0
-- 3.0.0以后新增了`kotlin`版本；
-- 此外，java版本和kotlin版本都删除了`ExitUtils`；
-- kotlin版本没有`GsonUtil`；
+最近更新 2020.10.30
 
 ### How to use
 
@@ -35,13 +23,13 @@ allprojects {
 ```
 dependencies {
     //kotlin 版本
-    implementation 'com.github.yechaoa.YUtils:yutilskt:3.1.2'
+    implementation 'com.github.yechaoa.YUtils:yutilskt:3.1.3'
 
     //java 版本
-    implementation 'com.github.yechaoa.YUtils:yutils:3.1.2'
+    implementation 'com.github.yechaoa.YUtils:yutils:3.1.3'
 
     //kotlin && java 版本
-    implementation 'com.github.yechaoa:YUtils:3.1.2'
+    implementation 'com.github.yechaoa:YUtils:3.1.3'
 }
 ```
 
@@ -64,10 +52,6 @@ LogUtil.setIsLog(true);
 
 * Application getApp()<br>获取全局上下文
 
-* int getScreenWidth()<br>获取屏幕宽度
-
-* int getScreenHeight()<br>获取屏幕高度
-
 * void showLoading(Activity activity,String msg)<br>Loading加载框
 
 * void hideLoading()<br>hideLoading
@@ -83,10 +67,6 @@ LogUtil.setIsLog(true);
 * boolean checkPhoneNumber(String number)<br>校验手机号
 
 * String MD5(String data)<br>MD5加密
-
-* int dp2px(float dp)<br>dp2px
-
-* float px2dp(int px)<br>px2dp
 
 * void copyToClipboard(String text)<br>复制文本到粘贴板
 
@@ -131,7 +111,11 @@ LogUtil.setIsLog(true);
 
 * String getCurrentActivityName()<br> 获得当前Activity名字
 
-* void finishActivity(Activity activity)<br> 关闭当前Activity
+* void start(Class<?> targetActivity)<br> 启动指定Activity 无参
+
+* void start(Class<?> targetActivity, Bundle bundle)<br> 启动指定Activity，带Bundle参数（kotlin调用参数可选）
+
+* void finish(Activity activity)<br> 关闭指定Activity
 
 * void closeAllActivity()<br> 关闭所有Activity
 
@@ -220,10 +204,48 @@ like this
 
 * <T> GsonToMaps(String gsonString)
 
+> ## 10.DisplayUtil
+
+* int dp2px(float dp)<br>dp2px
+
+* float px2dp(int px)<br>px2dp
+
+* int getScreenWidth()<br>获取屏幕宽度
+
+* int getScreenHeight()<br>获取屏幕高度
+
+* int getStatusBarHeight()<br>获取状态栏高度
+
+* int getActionBarHeight()<br>获取ActionBar高度
+
+* int getNavBarHeight()<br>获取导航栏高度
+
 
  <br> 
  
-混淆
+## 更新记录
+
+#### 3.1.3（2020-10-30）
+- 添加DisplayUtil
+- 优化。
+
+#### 3.1.2 (2020-10-22)
+优化。
+
+#### 3.1.1
+优化引用方式，可以kotlin和java分开引用，也可以一起引用。
+
+#### 3.1.0
+简化了部分util原有的调用方式，属于兼容更新。
+
+#### 3.0.0
+- 3.0.0以后新增了`kotlin`版本；
+- 此外，java版本和kotlin版本都删除了`ExitUtils`；
+- kotlin版本没有`GsonUtil`；
+
+
+### 混淆
+
 ```
 #YUtils
 -keep class com.yechaoa.yutils.**{*;}
