@@ -92,7 +92,7 @@ public class ActivityUtil {
     }
 
     /**
-     * 启动一个Activity 无参
+     * 启动指定Activity 无参
      */
     public static void start(Class<?> targetActivity) {
         Intent intent = new Intent(getCurrentActivity(), targetActivity);
