@@ -3,7 +3,6 @@
 [![](https://jitpack.io/v/yechaoa/YUtils.svg)](https://jitpack.io/#yechaoa/YUtils)
 ![](https://img.shields.io/badge/language-Java%20&%20kotlin-orange.svg)
 ![](https://img.shields.io/hexpm/l/plug.svg)
-![](https://img.shields.io/badge/be%20happy-%E5%BC%80%E5%BF%83%E5%B0%B1%E5%A5%BD-green.svg)
 
 最近更新 2020.10.30
 
