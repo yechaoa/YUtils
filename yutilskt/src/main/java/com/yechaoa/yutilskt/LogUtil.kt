@@ -10,7 +10,7 @@ import android.util.Log
  * CSDN : http://blog.csdn.net/yechaoa
  */
 object LogUtil {
-    private var TAG = "LogUtilKt"
+    private var TAG = "LogUtil"
     private var IS_LOG = false
     private const val MAX_LENGTH = 4000
 
@@ -29,35 +29,35 @@ object LogUtil {
     fun i(msg: String) {
         if (IS_LOG) {
             val info = autoJumpLogInfos
-            val strLength = msg.length
+            val msgLength = msg.length
             var start = 0
             var end = MAX_LENGTH
             for (i in 0..99) {
-                if (strLength > end) {
+                if (msgLength > end) {
                     Log.i(TAG, info[1] + info[2] + " --->> " + msg.substring(start, end))
                     start = end
-                    end = end + MAX_LENGTH
+                    end += MAX_LENGTH
                 } else {
-                    Log.i(TAG, info[1] + info[2] + " --->> " + msg.substring(start, strLength))
+                    Log.i(TAG, info[1] + info[2] + " --->> " + msg.substring(start, msgLength))
                     break
                 }
             }
         }
     }
 
-    fun i(TAG: String?, msg: String) {
+    fun i(tag: String?, msg: String) {
         if (IS_LOG) {
             val info = autoJumpLogInfos
-            val strLength = msg.length
+            val msgLength = msg.length
             var start = 0
             var end = MAX_LENGTH
             for (i in 0..99) {
-                if (strLength > end) {
-                    Log.i(TAG, info[1] + info[2] + " --->> " + msg.substring(start, end))
+                if (msgLength > end) {
+                    Log.i(tag, info[1] + info[2] + " --->> " + msg.substring(start, end))
                     start = end
-                    end = end + MAX_LENGTH
+                    end += MAX_LENGTH
                 } else {
-                    Log.i(TAG, info[1] + info[2] + " --->> " + msg.substring(start, strLength))
+                    Log.i(tag, info[1] + info[2] + " --->> " + msg.substring(start, msgLength))
                     break
                 }
             }
@@ -67,35 +67,35 @@ object LogUtil {
     fun d(msg: String) {
         if (IS_LOG) {
             val info = autoJumpLogInfos
-            val strLength = msg.length
+            val msgLength = msg.length
             var start = 0
             var end = MAX_LENGTH
             for (i in 0..99) {
-                if (strLength > end) {
+                if (msgLength > end) {
                     Log.d(TAG, info[1] + info[2] + " --->> " + msg.substring(start, end))
                     start = end
-                    end = end + MAX_LENGTH
+                    end += MAX_LENGTH
                 } else {
-                    Log.d(TAG, info[1] + info[2] + " --->> " + msg.substring(start, strLength))
+                    Log.d(TAG, info[1] + info[2] + " --->> " + msg.substring(start, msgLength))
                     break
                 }
             }
         }
     }
 
-    fun d(TAG: String?, msg: String) {
+    fun d(tag: String?, msg: String) {
         if (IS_LOG) {
             val info = autoJumpLogInfos
-            val strLength = msg.length
+            val msgLength = msg.length
             var start = 0
             var end = MAX_LENGTH
             for (i in 0..99) {
-                if (strLength > end) {
-                    Log.d(TAG, info[1] + info[2] + " --->> " + msg.substring(start, end))
+                if (msgLength > end) {
+                    Log.d(tag, info[1] + info[2] + " --->> " + msg.substring(start, end))
                     start = end
-                    end = end + MAX_LENGTH
+                    end += MAX_LENGTH
                 } else {
-                    Log.d(TAG, info[1] + info[2] + " --->> " + msg.substring(start, strLength))
+                    Log.d(tag, info[1] + info[2] + " --->> " + msg.substring(start, msgLength))
                     break
                 }
             }
@@ -105,35 +105,35 @@ object LogUtil {
     fun e(msg: String) {
         if (IS_LOG) {
             val info = autoJumpLogInfos
-            val strLength = msg.length
+            val msgLength = msg.length
             var start = 0
             var end = MAX_LENGTH
             for (i in 0..99) {
-                if (strLength > end) {
+                if (msgLength > end) {
                     Log.e(TAG, info[1] + info[2] + " --->> " + msg.substring(start, end))
                     start = end
-                    end = end + MAX_LENGTH
+                    end += MAX_LENGTH
                 } else {
-                    Log.e(TAG, info[1] + info[2] + " --->> " + msg.substring(start, strLength))
+                    Log.e(TAG, info[1] + info[2] + " --->> " + msg.substring(start, msgLength))
                     break
                 }
             }
         }
     }
 
-    fun e(TAG: String?, msg: String) {
+    fun e(tag: String?, msg: String) {
         if (IS_LOG) {
             val info = autoJumpLogInfos
-            val strLength = msg.length
+            val msgLength = msg.length
             var start = 0
             var end = MAX_LENGTH
             for (i in 0..99) {
-                if (strLength > end) {
-                    Log.e(TAG, info[1] + info[2] + " --->> " + msg.substring(start, end))
+                if (msgLength > end) {
+                    Log.e(tag, info[1] + info[2] + " --->> " + msg.substring(start, end))
                     start = end
-                    end = end + MAX_LENGTH
+                    end += MAX_LENGTH
                 } else {
-                    Log.e(TAG, info[1] + info[2] + " --->> " + msg.substring(start, strLength))
+                    Log.e(tag, info[1] + info[2] + " --->> " + msg.substring(start, msgLength))
                     break
                 }
             }
@@ -144,7 +144,7 @@ object LogUtil {
      * 获取打印信息所在方法名，行号等信息
      */
     private val autoJumpLogInfos: Array<String>
-        private get() {
+        get() {
             val infos = arrayOf("", "", "")
             val elements = Thread.currentThread().stackTrace
             infos[0] = elements[4].className.substring(elements[4].className.lastIndexOf(".") + 1)

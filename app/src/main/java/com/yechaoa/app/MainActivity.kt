@@ -17,6 +17,9 @@ class MainActivity : AppCompatActivity() {
             YUtils.showLoading(this, "加载中")
         }
 
+        btn_log.setOnClickListener {
+            LogUtil.d(getString(R.string.large_text))
+        }
 
         val set = HashSet<String>()
         val array = arrayListOf("1", "2", "3")
