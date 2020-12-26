@@ -4,7 +4,7 @@
 ![](https://img.shields.io/badge/language-Java%20&%20kotlin-orange.svg)
 ![](https://img.shields.io/hexpm/l/plug.svg)
 
-最近更新 2020.10.30
+最近更新 2020.12.26
 
 ### How to use
 
@@ -22,13 +22,13 @@ allprojects {
 ```
 dependencies {
     //kotlin 版本
-    implementation 'com.github.yechaoa.YUtils:yutilskt:3.1.3'
+    implementation 'com.github.yechaoa.YUtils:yutilskt:3.1.4'
 
     //java 版本
-    implementation 'com.github.yechaoa.YUtils:yutils:3.1.3'
+    implementation 'com.github.yechaoa.YUtils:yutils:3.1.4'
 
     //kotlin && java 版本
-    implementation 'com.github.yechaoa:YUtils:3.1.3'
+    implementation 'com.github.yechaoa:YUtils:3.1.4'
 }
 ```
 
