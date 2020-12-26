@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         button.setOnClickListener {
             SpUtil.setStringSet("testStringSet", set)
+            //SpUtil.getBoolean("111",true)
         }
 
         button2.setOnClickListener {

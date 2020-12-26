@@ -22,8 +22,8 @@ object SpUtil {
         sp.edit().putString(key, value).apply()
     }
 
-    fun getString(key: String?): String {
-        return sp.getString(key, "")
+    fun getString(key: String?, defValue: String = ""): String {
+        return sp.getString(key, defValue)
     }
 
     /**
@@ -44,8 +44,8 @@ object SpUtil {
         sp.edit().putInt(key, value).apply()
     }
 
-    fun getInt(key: String?): Int {
-        return sp.getInt(key, 0)
+    fun getInt(key: String?, defValue: Int = 0): Int {
+        return sp.getInt(key, defValue)
     }
 
     /**
@@ -55,8 +55,8 @@ object SpUtil {
         sp.edit().putBoolean(key, value).apply()
     }
 
-    fun getBoolean(key: String?): Boolean {
-        return sp.getBoolean(key, false)
+    fun getBoolean(key: String?, defValue: Boolean = false): Boolean {
+        return sp.getBoolean(key, defValue)
     }
 
     /**
@@ -66,8 +66,8 @@ object SpUtil {
         sp.edit().putFloat(key, value!!).apply()
     }
 
-    fun getFloat(key: String?): Float {
-        return sp.getFloat(key, 0f)
+    fun getFloat(key: String?, defValue: Float = 0f): Float {
+        return sp.getFloat(key, defValue)
     }
 
     /**
@@ -77,8 +77,8 @@ object SpUtil {
         sp.edit().putLong(key, value!!).apply()
     }
 
-    fun getLong(key: String?): Long {
-        return sp.getLong(key, 0)
+    fun getLong(key: String?, defValue: Long = 0): Long {
+        return sp.getLong(key, defValue)
     }
 
     /**
