@@ -4,7 +4,7 @@
 ![](https://img.shields.io/badge/language-Java%20&%20kotlin-orange.svg)
 ![](https://img.shields.io/hexpm/l/plug.svg)
 
-最近更新 2020.12.26
+最近更新 2020.12.29
 
 ### How to use
 
@@ -22,13 +22,13 @@ allprojects {
 ```
 dependencies {
     //kotlin 版本
-    implementation 'com.github.yechaoa.YUtils:yutilskt:3.1.4'
+    implementation 'com.github.yechaoa.YUtils:yutilskt:3.1.5'
 
     //java 版本
-    implementation 'com.github.yechaoa.YUtils:yutils:3.1.4'
+    implementation 'com.github.yechaoa.YUtils:yutils:3.1.5'
 
     //kotlin && java 版本
-    implementation 'com.github.yechaoa:YUtils:3.1.4'
+    implementation 'com.github.yechaoa:YUtils:3.1.5'
 }
 ```
 
@@ -39,7 +39,8 @@ dependencies {
 ```
 //初始化
 YUtils.init(this);
-//设置打印开关（可选，默认false）
+
+//打印开关（可选，默认false不打印）
 LogUtil.setIsLog(true);
 ```
 
@@ -75,6 +76,7 @@ LogUtil.setIsLog(true);
 
 * void closeSoftKeyboard()<br>关闭软键盘
 
+* Boolean hasSim()<br>是否有sim卡 即设备是否可以拨打电话等
  
 > ## 2.ToastUtil（任意线程，不重复显示，可取消）.
 
@@ -223,6 +225,10 @@ like this
  <br> 
  
 ## 更新记录
+
+#### 3.1.5（2020-12-29）
+- 初始化校验
+- YUtils新增sim卡判断
 
 #### 3.1.4（2020-12-26）
 - SpUtil优化

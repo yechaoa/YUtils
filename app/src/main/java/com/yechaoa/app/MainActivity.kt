@@ -53,7 +53,13 @@ class MainActivity : AppCompatActivity() {
 //        ActivityUtil.start(MainActivity::class.java)
 //        ActivityUtil.finish(this)
 
-        LogUtil.i("" + DisplayUtil.getStatusBarHeight() + "---" + DisplayUtil.getScreenHeight())
-        LogUtil.i("" + DisplayUtil.getActionBarHeight() + "---" + DisplayUtil.getNavBarHeight())
+        btn_display.setOnClickListener {
+            LogUtil.i("" + DisplayUtil.getStatusBarHeight() + "---" + DisplayUtil.getScreenHeight())
+            LogUtil.i("" + DisplayUtil.getActionBarHeight() + "---" + DisplayUtil.getNavBarHeight())
+        }
+
+        btn_sim.setOnClickListener {
+            ToastUtil.show(if (YUtils.hasSim()) "有sim卡" else "无sim卡")
+        }
     }
 }

@@ -8,6 +8,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.telephony.TelephonyManager;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -36,7 +37,7 @@ public class YUtils {
 
     private static Toast toast;
     private static ProgressDialog progressDialog;
-    private static Application mApp;
+    private static Application mApp = null;
 
     /**
      * 使用init()即可
@@ -62,7 +63,11 @@ public class YUtils {
     }
 
     public static Application getApp() {
-        return mApp;
+        if (null == mApp) {
+            throw new NullPointerException("YUtils未在Application中初始化");
+        } else {
+            return mApp;
+        }
     }
 
     /**
@@ -267,4 +272,18 @@ public class YUtils {
         inputManger.hideSoftInputFromWindow(ActivityUtil.getCurrentActivity().getWindow().getDecorView().getWindowToken(), 0);
     }
 
+    /**
+     * 是否有sim卡 即设备是否可以拨打电话等
+     */
+    public static Boolean hasSim() {
+        TelephonyManager telephonyManager = (TelephonyManager) getApp().getSystemService(Context.TELEPHONY_SERVICE);
+        boolean result = true;
+        switch (telephonyManager.getSimState()) {
+            case TelephonyManager.SIM_STATE_ABSENT:
+            case TelephonyManager.SIM_STATE_UNKNOWN:
+                result = false;
+                break;
+        }
+        return result;
+    }
 }

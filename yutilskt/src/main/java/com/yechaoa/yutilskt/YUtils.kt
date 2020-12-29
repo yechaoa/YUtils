@@ -6,6 +6,7 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.pm.PackageManager
+import android.telephony.TelephonyManager
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
@@ -50,7 +51,11 @@ object YUtils {
     }
 
     fun getApp(): Application {
-        return mApp
+        if (this::mApp.isInitialized) {
+            return mApp
+        } else {
+            throw UninitializedPropertyAccessException("YUtils未在Application中初始化")
+        }
     }
 
     /**
@@ -234,5 +239,16 @@ object YUtils {
         inputManger.hideSoftInputFromWindow(ActivityUtil.currentActivity!!.window.decorView.windowToken, 0)
     }
 
-
+    /**
+     * 是否有sim卡 即设备是否可以拨打电话等
+     */
+    fun hasSim(): Boolean {
+        val telephonyManager = getApp().getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+        var result = true
+        when (telephonyManager.simState) {
+            TelephonyManager.SIM_STATE_ABSENT -> result = false
+            TelephonyManager.SIM_STATE_UNKNOWN -> result = false
+        }
+        return result
+    }
 }
