@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class ToastUtil {
 
-    private static Toast toast;
+    private static Toast toast = null;
 
     /**
      * showToast 底部显示（默认） 直接用show()即可
@@ -61,7 +61,7 @@ public class ToastUtil {
      */
     private static void createToast(String msg) {
         if (toast == null) {
-            toast = Toast.makeText(YUtils.getApp(), msg, Toast.LENGTH_SHORT);
+            toast = Toast.makeText(YUtils.getApp().getApplicationContext(), msg, Toast.LENGTH_SHORT);
         } else {
             toast.setText(msg);
         }
@@ -115,7 +115,7 @@ public class ToastUtil {
      */
     private static void createCenterToast(String msg) {
         if (toast == null) {
-            toast = Toast.makeText(YUtils.getApp(), msg, Toast.LENGTH_SHORT);
+            toast = Toast.makeText(YUtils.getApp().getApplicationContext(), msg, Toast.LENGTH_SHORT);
         } else {
             toast.setText(msg);
         }
@@ -146,6 +146,16 @@ public class ToastUtil {
     public static void cancel() {
         if (toast != null) {
             toast.cancel();
+        }
+    }
+
+    /**
+     * 回收Toast
+     */
+    public static void release() {
+        if (toast != null) {
+            toast.cancel();
+            toast = null;
         }
     }
 

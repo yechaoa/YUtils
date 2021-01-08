@@ -44,7 +44,7 @@ object ToastUtil {
      */
     private fun createToast(msg: String) {
         if (toast == null) {
-            toast = Toast.makeText(YUtils.getApp(), msg, Toast.LENGTH_SHORT)
+            toast = Toast.makeText(YUtils.getApp().applicationContext, msg, Toast.LENGTH_SHORT)
         } else {
             toast!!.setText(msg)
         }
@@ -83,7 +83,7 @@ object ToastUtil {
      */
     private fun createCenterToast(msg: String) {
         if (toast == null) {
-            toast = Toast.makeText(YUtils.getApplication(), msg, Toast.LENGTH_SHORT)
+            toast = Toast.makeText(YUtils.getApp().applicationContext, msg, Toast.LENGTH_SHORT)
         } else {
             toast!!.setText(msg)
         }
@@ -101,14 +101,25 @@ object ToastUtil {
      */
     @Deprecated("简化调用，使用cancel()即可", ReplaceWith("ToastUtilKt.cancel()"))
     fun cancelToast() {
-        if (toast != null) {
-            toast!!.cancel()
-        }
+        toast?.cancel()
     }
 
+    /**
+     * 取消Toast
+     * onDestroy时调用，或者onPause
+     * 当前页面finish之后在下一个页面不会显示
+     */
     fun cancel() {
-        if (toast != null) {
-            toast!!.cancel()
+        toast?.cancel()
+    }
+
+    /**
+     * 回收Toast
+     */
+    fun release() {
+        toast?.let {
+            it.cancel()
+            toast = null
         }
     }
 }
