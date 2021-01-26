@@ -23,7 +23,7 @@ object SpUtil {
     }
 
     fun getString(key: String?, defValue: String = ""): String {
-        return sp.getString(key, defValue)
+        return sp.getString(key, defValue)!!
     }
 
     /**

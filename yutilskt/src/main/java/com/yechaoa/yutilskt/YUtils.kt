@@ -198,7 +198,7 @@ object YUtils {
      */
     fun copyToClipboard(text: String?) {
         val cm = getApp().getSystemService(Activity.CLIPBOARD_SERVICE) as ClipboardManager
-        cm.primaryClip = ClipData.newPlainText(getApp().packageName, text)
+        cm.setPrimaryClip(ClipData.newPlainText(getApp().packageName, text))
     }
 
     /**

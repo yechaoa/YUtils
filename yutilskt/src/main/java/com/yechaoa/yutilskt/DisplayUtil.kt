@@ -61,7 +61,7 @@ object DisplayUtil {
      */
     fun getActionBarHeight(): Int {
         val tv = TypedValue()
-        return if (YUtils.getApp().theme.resolveAttribute(R.attr.actionBarSize, tv, true)) {
+        return if (YUtils.getApp().theme.resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
             TypedValue.complexToDimensionPixelSize(tv.data, YUtils.getApp().resources.displayMetrics)
         } else 0
     }

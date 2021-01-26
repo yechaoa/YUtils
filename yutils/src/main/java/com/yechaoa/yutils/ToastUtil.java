@@ -1,8 +1,7 @@
 package com.yechaoa.yutils;
 
+import android.annotation.SuppressLint;
 import android.view.Gravity;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -59,15 +58,13 @@ public class ToastUtil {
      *
      * @param msg 接收参数
      */
+    @SuppressLint("ShowToast")
     private static void createToast(String msg) {
         if (toast == null) {
             toast = Toast.makeText(YUtils.getApp().getApplicationContext(), msg, Toast.LENGTH_SHORT);
         } else {
             toast.setText(msg);
         }
-        LinearLayout linearLayout = (LinearLayout) toast.getView();
-        TextView messageTextView = (TextView) linearLayout.getChildAt(0);
-        messageTextView.setTextSize(15);
         toast.show();
     }
 
@@ -113,16 +110,14 @@ public class ToastUtil {
      *
      * @param msg 接收参数
      */
+    @SuppressLint("ShowToast")
     private static void createCenterToast(String msg) {
         if (toast == null) {
             toast = Toast.makeText(YUtils.getApp().getApplicationContext(), msg, Toast.LENGTH_SHORT);
         } else {
             toast.setText(msg);
         }
-        LinearLayout linearLayout = (LinearLayout) toast.getView();
-        TextView messageTextView = (TextView) linearLayout.getChildAt(0);
         toast.setGravity(Gravity.CENTER, 0, 0);
-        messageTextView.setTextSize(15);
         toast.show();
     }
 

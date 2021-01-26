@@ -1,8 +1,7 @@
 package com.yechaoa.yutilskt
 
+import android.annotation.SuppressLint
 import android.view.Gravity
-import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
 
 /**
@@ -42,15 +41,13 @@ object ToastUtil {
      *
      * @param msg 接收参数
      */
+    @SuppressLint("ShowToast")
     private fun createToast(msg: String) {
         if (toast == null) {
             toast = Toast.makeText(YUtils.getApp().applicationContext, msg, Toast.LENGTH_SHORT)
         } else {
             toast!!.setText(msg)
         }
-        val linearLayout = toast!!.view as LinearLayout
-        val messageTextView = linearLayout.getChildAt(0) as TextView
-        messageTextView.textSize = 15f
         toast!!.show()
     }
 
@@ -81,16 +78,14 @@ object ToastUtil {
      *
      * @param msg 接收参数
      */
+    @SuppressLint("ShowToast")
     private fun createCenterToast(msg: String) {
         if (toast == null) {
             toast = Toast.makeText(YUtils.getApp().applicationContext, msg, Toast.LENGTH_SHORT)
         } else {
             toast!!.setText(msg)
         }
-        val linearLayout = toast!!.view as LinearLayout
-        val messageTextView = linearLayout.getChildAt(0) as TextView
         toast!!.setGravity(Gravity.CENTER, 0, 0)
-        messageTextView.textSize = 15f
         toast!!.show()
     }
 
