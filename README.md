@@ -4,7 +4,7 @@
 ![](https://img.shields.io/badge/language-Java%20&%20kotlin-orange.svg)
 ![](https://img.shields.io/hexpm/l/plug.svg)
 
-最近更新 2020.1.26
+最近更新 2021.01.26
 
 ### How to use
 
@@ -226,7 +226,7 @@ like this
  
 ## 更新记录
 
-#### 3.1.6（2021-01-26）
+#### 3.2.0（2021-01-26）
 - targetSdkVersion 30
 - ToastUtil适配Android 11
 
