@@ -22,13 +22,13 @@ allprojects {
 ```
 dependencies {
     //kotlin 版本
-    implementation 'com.github.yechaoa.YUtils:yutilskt:3.1.6'
+    implementation 'com.github.yechaoa.YUtils:yutilskt:3.2.0'
 
     //java 版本
-    implementation 'com.github.yechaoa.YUtils:yutils:3.1.6'
+    implementation 'com.github.yechaoa.YUtils:yutils:3.2.0'
 
     //kotlin && java 版本
-    implementation 'com.github.yechaoa:YUtils:3.1.6'
+    implementation 'com.github.yechaoa:YUtils:3.2.0'
 }
 ```
 
