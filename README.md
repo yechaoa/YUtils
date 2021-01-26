@@ -1,10 +1,10 @@
 # Android快速开发工具集合——YUtils
-	
+
 [![](https://jitpack.io/v/yechaoa/YUtils.svg)](https://jitpack.io/#yechaoa/YUtils)
 ![](https://img.shields.io/badge/language-Java%20&%20kotlin-orange.svg)
 ![](https://img.shields.io/hexpm/l/plug.svg)
 
-最近更新 2020.12.29
+最近更新 2020.1.26
 
 ### How to use
 
@@ -22,13 +22,13 @@ allprojects {
 ```
 dependencies {
     //kotlin 版本
-    implementation 'com.github.yechaoa.YUtils:yutilskt:3.1.5'
+    implementation 'com.github.yechaoa.YUtils:yutilskt:3.1.6'
 
     //java 版本
-    implementation 'com.github.yechaoa.YUtils:yutils:3.1.5'
+    implementation 'com.github.yechaoa.YUtils:yutils:3.1.6'
 
     //kotlin && java 版本
-    implementation 'com.github.yechaoa:YUtils:3.1.5'
+    implementation 'com.github.yechaoa:YUtils:3.1.6'
 }
 ```
 
@@ -225,6 +225,10 @@ like this
  <br> 
  
 ## 更新记录
+
+#### 3.1.6（2021-01-26）
+- targetSdkVersion 30
+- ToastUtil适配Android 11
 
 #### 3.1.5（2020-12-29）
 - 初始化校验
