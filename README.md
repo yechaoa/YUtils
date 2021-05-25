@@ -4,7 +4,7 @@
 ![](https://img.shields.io/badge/language-Java%20&%20kotlin-orange.svg)
 ![](https://img.shields.io/hexpm/l/plug.svg)
 
-最近更新 2021.01.26
+最近更新 2021.05.25
 
 ### How to use
 
@@ -22,13 +22,13 @@ allprojects {
 ```
 dependencies {
     //kotlin 版本
-    implementation 'com.github.yechaoa.YUtils:yutilskt:3.2.0'
+    implementation 'com.github.yechaoa.YUtils:yutilskt:3.2.1'
 
     //java 版本
-    implementation 'com.github.yechaoa.YUtils:yutils:3.2.0'
+    implementation 'com.github.yechaoa.YUtils:yutils:3.2.1'
 
     //kotlin && java 版本
-    implementation 'com.github.yechaoa:YUtils:3.2.0'
+    implementation 'com.github.yechaoa:YUtils:3.2.1'
 }
 ```
 
@@ -50,7 +50,9 @@ LogUtil.setIsLog(true);
 
 * void init(Application app)<br>Application 中初始化
 
-* Application getApp()<br>获取全局上下文
+* Application getApp()<br>获取Application
+
+* Context getAppContext()<br>获取全局上下文
 
 * void showLoading(Activity activity,String msg)<br>Loading加载框
 
@@ -85,7 +87,11 @@ LogUtil.setIsLog(true);
 * void showCenter(final String msg)<br>showCenter 居中显示
 
 * void cancel()<br>取消Toast，onDestroy时调用，或onPause，当前页面finish之后在下一个页面不会再显示
- 
+
+> kotlin分支中添加了一个Toast扩展，比之前使用更加简单方便，调用示例：
+> "111".show() -> 111
+> 111.show() -> 111
+> 111.show("222") -> 222
  
 > ## 3.LogUtil（日志打印，带方法行数链接，可超长打印）
 

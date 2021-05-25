@@ -64,10 +64,14 @@ public class YUtils {
 
     public static Application getApp() {
         if (null == mApp) {
-            throw new NullPointerException("YUtils未在Application中初始化");
+            throw new NullPointerException("YUtils is not initialized in application");
         } else {
             return mApp;
         }
+    }
+
+    public static Context getAppContext() {
+        return getApp().getApplicationContext();
     }
 
     /**

@@ -1,15 +1,19 @@
 package com.yechaoa.app
 
+import android.os.Build
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Looper
 import android.widget.TextView
-import com.google.android.material.snackbar.Snackbar
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import com.yechaoa.yutilskt.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.concurrent.thread
 
 
 class MainActivity : AppCompatActivity() {
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -31,7 +35,6 @@ class MainActivity : AppCompatActivity() {
 
         button.setOnClickListener {
             SpUtil.setStringSet("testStringSet", set)
-            //SpUtil.getBoolean("111",true)
         }
 
         button2.setOnClickListener {
@@ -51,9 +54,6 @@ class MainActivity : AppCompatActivity() {
             LogUtil.i("" + ActivityUtil.currentActivityName)
         }
 
-//        ActivityUtil.start(MainActivity::class.java)
-//        ActivityUtil.finish(this)
-
         btn_display.setOnClickListener {
             LogUtil.i("" + DisplayUtil.getStatusBarHeight() + "---" + DisplayUtil.getScreenHeight())
             LogUtil.i("" + DisplayUtil.getActionBarHeight() + "---" + DisplayUtil.getNavBarHeight())
@@ -62,5 +62,17 @@ class MainActivity : AppCompatActivity() {
         btn_sim.setOnClickListener {
             ToastUtil.show(if (YUtils.hasSim()) "有sim卡" else "无sim卡")
         }
+
+        btn_thread.setOnClickListener {
+            LogUtil.d("" + mainLooper.isCurrentThread)
+            LogUtil.d("" + Looper.myLooper()!!.isCurrentThread)
+            val b = mainLooper == Looper.myLooper()
+            LogUtil.d("" + b)
+            thread {
+                ToastUtil.show("213")
+            }
+
+        }
+
     }
 }

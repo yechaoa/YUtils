@@ -1,6 +1,7 @@
 package com.yechaoa.yutilskt
 
 import android.annotation.SuppressLint
+import android.os.Looper
 import android.view.Gravity
 import android.widget.Toast
 
@@ -19,9 +20,9 @@ object ToastUtil {
      *
      * @param msg 需要显示的参数
      */
-    @Deprecated("简化调用，使用show(msg)即可", ReplaceWith("ToastUtilKt.show(msg)"))
+    @Deprecated("简化调用，使用show(msg)即可", ReplaceWith("ToastUtil.show(msg)"))
     fun showToast(msg: String) {
-        if ("main" == Thread.currentThread().name) {
+        if (Looper.getMainLooper() == Looper.myLooper()) {
             createToast(msg)
         } else {
             ActivityUtil.currentActivity?.runOnUiThread { createToast(msg) }
@@ -29,7 +30,7 @@ object ToastUtil {
     }
 
     fun show(msg: String) {
-        if ("main" == Thread.currentThread().name) {
+        if (Looper.getMainLooper() == Looper.myLooper()) {
             createToast(msg)
         } else {
             ActivityUtil.currentActivity?.runOnUiThread { createToast(msg) }
@@ -56,9 +57,9 @@ object ToastUtil {
      *
      * @param msg 需要显示的参数
      */
-    @Deprecated("简化调用，使用showCenter(msg)即可", ReplaceWith("ToastUtilKt.showCenter(msg)"))
+    @Deprecated("简化调用，使用showCenter(msg)即可", ReplaceWith("ToastUtil.showCenter(msg)"))
     fun showCenterToast(msg: String) {
-        if ("main" == Thread.currentThread().name) {
+        if (Looper.getMainLooper() == Looper.myLooper()) {
             createCenterToast(msg)
         } else {
             ActivityUtil.currentActivity!!.runOnUiThread { createCenterToast(msg) }
@@ -66,7 +67,7 @@ object ToastUtil {
     }
 
     fun showCenter(msg: String) {
-        if ("main" == Thread.currentThread().name) {
+        if (Looper.getMainLooper() == Looper.myLooper()) {
             createCenterToast(msg)
         } else {
             ActivityUtil.currentActivity!!.runOnUiThread { createCenterToast(msg) }
@@ -94,7 +95,7 @@ object ToastUtil {
      * onDestroy时调用，或者onPause
      * 当前页面finish之后在下一个页面不会显示
      */
-    @Deprecated("简化调用，使用cancel()即可", ReplaceWith("ToastUtilKt.cancel()"))
+    @Deprecated("简化调用，使用cancel()即可", ReplaceWith("ToastUtil.cancel()"))
     fun cancelToast() {
         toast?.cancel()
     }
