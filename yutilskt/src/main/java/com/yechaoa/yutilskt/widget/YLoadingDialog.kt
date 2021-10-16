@@ -13,7 +13,13 @@ import com.yechaoa.yutilskt.R
  * GitHub : https://github.com/yechaoa
  * CSDN : http://blog.csdn.net/yechaoa
  */
-class YLoadingDialog constructor(context: Context, msg: String, cancelable: Boolean = true, theme: Int = R.style.yLoadingDialog) : Dialog(context, theme) {
+class YLoadingDialog(
+    context: Context,
+    msg: String,
+    cancelable: Boolean = true,
+    theme: Int = R.style.yLoadingDialog,
+    private val cancelListener: (() -> Unit)? = null
+) : Dialog(context, theme) {
 
     init {
         setContentView(R.layout.dialog_y_loading)
@@ -25,6 +31,11 @@ class YLoadingDialog constructor(context: Context, msg: String, cancelable: Bool
         window?.attributes = lp
         val tvTitle = findViewById<TextView>(R.id.tv_y_loading)
         tvTitle?.text = msg
+
+        this.setOnCancelListener {
+            cancelListener?.invoke()
+        }
+
     }
 
 }

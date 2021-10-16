@@ -44,12 +44,12 @@ object ToastUtil {
      */
     @SuppressLint("ShowToast")
     private fun createToast(msg: String) {
-        if (toast == null) {
+        if (null == toast) {
             toast = Toast.makeText(YUtils.getApp().applicationContext, msg, Toast.LENGTH_SHORT)
         } else {
-            toast!!.setText(msg)
+            toast?.setText(msg)
         }
-        toast!!.show()
+        toast?.show()
     }
 
     /**
@@ -62,7 +62,7 @@ object ToastUtil {
         if (Looper.getMainLooper() == Looper.myLooper()) {
             createCenterToast(msg)
         } else {
-            ActivityUtil.currentActivity!!.runOnUiThread { createCenterToast(msg) }
+            ActivityUtil.currentActivity?.runOnUiThread { createCenterToast(msg) }
         }
     }
 
@@ -70,7 +70,7 @@ object ToastUtil {
         if (Looper.getMainLooper() == Looper.myLooper()) {
             createCenterToast(msg)
         } else {
-            ActivityUtil.currentActivity!!.runOnUiThread { createCenterToast(msg) }
+            ActivityUtil.currentActivity?.runOnUiThread { createCenterToast(msg) }
         }
     }
 
@@ -81,13 +81,13 @@ object ToastUtil {
      */
     @SuppressLint("ShowToast")
     private fun createCenterToast(msg: String) {
-        if (toast == null) {
+        if (null == toast) {
             toast = Toast.makeText(YUtils.getApp().applicationContext, msg, Toast.LENGTH_SHORT)
         } else {
-            toast!!.setText(msg)
+            toast?.setText(msg)
         }
-        toast!!.setGravity(Gravity.CENTER, 0, 0)
-        toast!!.show()
+        toast?.setGravity(Gravity.CENTER, 0, 0)
+        toast?.show()
     }
 
     /**

@@ -51,7 +51,7 @@ object TimeUtil {
     /**
      * 转换为年月日
      */
-    fun formatDate(mDate: String?): String {
+    fun formatDate(mDate: String): String {
         val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         var date: Date? = null
         try {
@@ -59,6 +59,6 @@ object TimeUtil {
         } catch (e: ParseException) {
             e.printStackTrace()
         }
-        return sdf.format(date)
+        return if (null != date) sdf.format(date) else ""
     }
 }

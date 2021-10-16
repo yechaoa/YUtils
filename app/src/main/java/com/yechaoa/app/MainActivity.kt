@@ -46,7 +46,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         mBinding.btnShowLoading.setOnClickListener {
-            YUtils.showLoading(this, "test")
+            YUtils.showLoading(this, "test", cancelListener = {
+                LogUtil.i("dialog canceled")
+            })
             LogUtil.i("" + YUtils.loadingIsShowing())
         }
 

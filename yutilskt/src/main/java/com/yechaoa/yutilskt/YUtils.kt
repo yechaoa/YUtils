@@ -85,8 +85,8 @@ object YUtils {
     /**
      * Loading加载框
      */
-    fun showLoading(activity: Activity, msg: String, cancelable: Boolean = true) {
-        yLoadingDialog = YLoadingDialog(activity, msg, cancelable)
+    fun showLoading(activity: Activity, msg: String, cancelable: Boolean = true, cancelListener: (() -> Unit)? = null) {
+        yLoadingDialog = YLoadingDialog(activity, msg, cancelable, cancelListener = cancelListener)
         yLoadingDialog?.show()
     }
 
@@ -98,6 +98,13 @@ object YUtils {
             yLoadingDialog?.dismiss()
             yLoadingDialog = null
         }
+    }
+
+    /**
+     * getLoadingDialog
+     */
+    fun getLoadingDialog(): YLoadingDialog? {
+        return yLoadingDialog
     }
 
     /**
@@ -126,14 +133,14 @@ object YUtils {
     /**
      * 获取版本名
      */
-    fun getVersionName(): String? {
+    fun getVersionName(): String {
         return try {
             val packageManager = getApp().packageManager
             val packageInfo = packageManager.getPackageInfo(getApp().packageName, 0)
             packageInfo.versionName
         } catch (e: PackageManager.NameNotFoundException) {
             e.printStackTrace()
-            null
+            ""
         }
     }
 
@@ -154,7 +161,7 @@ object YUtils {
     /**
      * 检验手机号
      */
-    fun checkPhoneNumber(number: String?): Boolean {
+    fun checkPhoneNumber(number: String): Boolean {
         var p: Pattern? = null
         var m: Matcher? = null
         var b = false
@@ -210,19 +217,17 @@ object YUtils {
      */
     fun foreground(view: View?, color: Int, start: Int, end: Int): View? {
         if (view is Button) {
-            val btn = view
             // 获取文字
-            val span: Spannable = SpannableString(btn.text.toString())
+            val span: Spannable = SpannableString(view.text.toString())
             //设置颜色和起始位置
             span.setSpan(ForegroundColorSpan(color), start, end, Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
-            btn.text = span
-            return btn
+            view.text = span
+            return view
         } else if (view is TextView) { //EditText extends TextView
-            val text = view
-            val span: Spannable = SpannableString(text.text.toString())
+            val span: Spannable = SpannableString(view.text.toString())
             span.setSpan(ForegroundColorSpan(color), start, end, Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
-            text.text = span
-            return text
+            view.text = span
+            return view
         }
         return null
     }
@@ -239,9 +244,8 @@ object YUtils {
      * 关闭软键盘
      */
     fun closeSoftKeyboard() {
-        val inputManger =
-            ActivityUtil.currentActivity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputManger.hideSoftInputFromWindow(ActivityUtil.currentActivity!!.window.decorView.windowToken, 0)
+        val inputManger = ActivityUtil.currentActivity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManger.hideSoftInputFromWindow(ActivityUtil.currentActivity?.window?.decorView?.windowToken, 0)
     }
 
     /**

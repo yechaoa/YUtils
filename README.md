@@ -4,7 +4,7 @@
 ![](https://img.shields.io/badge/language-Java%20&%20kotlin-orange.svg)
 ![](https://img.shields.io/hexpm/l/plug.svg)
 
-最近更新 2021.05.25
+最近更新 2021.10.16
 
 ### How to use
 
@@ -54,9 +54,11 @@ LogUtil.setIsLog(true);
 
 * Context getAppContext()<br>获取全局上下文
 
-* void showLoading(Activity activity,String msg)<br>Loading加载框
+* void showLoading(Activity activity,String msg)<br>Loading加载框，kotlin版本参数更多
 
 * void hideLoading()<br>hideLoading
+
+* boolean getLoadingDialog()<br>获取dialog
 
 * boolean loadingIsShowing()<br>loading是否显示
 
@@ -231,6 +233,9 @@ like this
  <br> 
  
 ## 近期更新
+
+#### 3.2.2（2021-10-16）
+- optimized code
 
 #### 3.2.1（2021-05-25）
 - 优化调整

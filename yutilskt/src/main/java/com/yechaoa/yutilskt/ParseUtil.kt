@@ -26,8 +26,10 @@ object ParseUtil {
     fun parseCode(response: String?): String {
         var code = ""
         try {
-            val json = JSONObject(response)
-            code = json.getString("code")
+            response?.let {
+                val json = JSONObject(response)
+                code = json.getString("code")
+            }
         } catch (e: JSONException) {
             e.printStackTrace()
         }
@@ -40,8 +42,10 @@ object ParseUtil {
     fun parseFlag(response: String?): Boolean {
         var flag = false
         try {
-            val json = JSONObject(response)
-            flag = json.getBoolean("flag")
+            response?.let {
+                val json = JSONObject(response)
+                flag = json.getBoolean("flag")
+            }
         } catch (e: JSONException) {
             e.printStackTrace()
         }
@@ -54,8 +58,10 @@ object ParseUtil {
     fun parseData(response: String?): String {
         var data = ""
         try {
-            val json = JSONObject(response)
-            data = json.getString("data")
+            response?.let {
+                val json = JSONObject(response)
+                data = json.getString("data")
+            }
         } catch (e: JSONException) {
             e.printStackTrace()
         }
@@ -68,10 +74,12 @@ object ParseUtil {
     fun parseInfo(response: String?): String {
         var info = ""
         try {
-            val json = JSONObject(response)
-            info = json.getString("info")
-        } catch (`var`: JSONException) {
-            `var`.printStackTrace()
+            response?.let {
+                val json = JSONObject(response)
+                info = json.getString("info")
+            }
+        } catch (e: JSONException) {
+            e.printStackTrace()
         }
         return info
     }
@@ -79,13 +87,15 @@ object ParseUtil {
     /**
      * 根据key值解析，只支持json中的一级字段
      */
-    fun parseByKey(response: String?, key: String?): String {
+    fun parseByKey(response: String?, key: String): String {
         var value = ""
         try {
-            val json = JSONObject(response)
-            value = json.getString(key)
-        } catch (`var`: JSONException) {
-            `var`.printStackTrace()
+            response?.let {
+                val json = JSONObject(response)
+                value = json.getString(key)
+            }
+        } catch (e: JSONException) {
+            e.printStackTrace()
         }
         return value
     }

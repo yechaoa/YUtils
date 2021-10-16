@@ -16,7 +16,7 @@ object ShareUtil {
     /**
      * 调用系统分享图片
      */
-    fun shareImage(title: String?, uri: Uri?) {
+    fun shareImage(title: String, uri: Uri) {
         val intent = Intent()
         intent.action = Intent.ACTION_SEND
         intent.type = "image/*"
@@ -27,7 +27,7 @@ object ShareUtil {
     /**
      * 调用系统分享文字
      */
-    fun shareText(title: String?, text: String?) {
+    fun shareText(title: String, text: String) {
         val intent = Intent()
         intent.action = Intent.ACTION_SEND
         intent.type = "text/plain"
