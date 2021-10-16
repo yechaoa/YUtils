@@ -1,24 +1,26 @@
 package com.yechaoa.app
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
-import com.google.android.material.snackbar.Snackbar
+import androidx.appcompat.app.AppCompatActivity
+import com.yechaoa.app.databinding.ActivityMainBinding
 import com.yechaoa.yutilskt.*
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var mBinding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        mBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(mBinding.root)
 
         findViewById<TextView>(R.id.text_view).setOnClickListener {
             YUtils.showLoading(this, "加载中")
         }
 
-        btn_log.setOnClickListener {
+        mBinding.btnLog.setOnClickListener {
             LogUtil.d(getString(R.string.large_text))
         }
 
@@ -29,22 +31,22 @@ class MainActivity : AppCompatActivity() {
             set.add("-----" + array[i])
         }
 
-        button.setOnClickListener {
+        mBinding.button.setOnClickListener {
             SpUtil.setStringSet("testStringSet", set)
             //SpUtil.getBoolean("111",true)
         }
 
-        button2.setOnClickListener {
+        mBinding.button2.setOnClickListener {
             val stringSet = SpUtil.getStringSet("testStringSet")
             LogUtil.i(stringSet.toString())
         }
 
-        showLoading.setOnClickListener {
+        mBinding.showLoading.setOnClickListener {
             YUtils.showLoading(this, "test")
             LogUtil.i("" + YUtils.loadingIsShowing())
         }
 
-        hideLoading.setOnClickListener {
+        mBinding.hideLoading.setOnClickListener {
             ToastUtil.show("取消loading")
             YUtils.hideLoading()
             LogUtil.i("" + YUtils.loadingIsShowing())
@@ -54,12 +56,12 @@ class MainActivity : AppCompatActivity() {
 //        ActivityUtil.start(MainActivity::class.java)
 //        ActivityUtil.finish(this)
 
-        btn_display.setOnClickListener {
+        mBinding.btnDisplay.setOnClickListener {
             LogUtil.i("" + DisplayUtil.getStatusBarHeight() + "---" + DisplayUtil.getScreenHeight())
             LogUtil.i("" + DisplayUtil.getActionBarHeight() + "---" + DisplayUtil.getNavBarHeight())
         }
 
-        btn_sim.setOnClickListener {
+        mBinding.btnSim.setOnClickListener {
             ToastUtil.show(if (YUtils.hasSim()) "有sim卡" else "无sim卡")
         }
     }
