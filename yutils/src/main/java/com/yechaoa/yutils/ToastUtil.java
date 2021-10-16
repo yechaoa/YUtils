@@ -1,6 +1,7 @@
 package com.yechaoa.yutils;
 
 import android.annotation.SuppressLint;
+import android.os.Looper;
 import android.view.Gravity;
 import android.widget.Toast;
 
@@ -23,7 +24,7 @@ public class ToastUtil {
      */
     @Deprecated
     public static void showToast(final String msg) {
-        if ("main".equals(Thread.currentThread().getName())) {
+        if (Looper.getMainLooper() == Looper.myLooper()) {
             createToast(msg);
         } else {
             ActivityUtil.getCurrentActivity().runOnUiThread(new Runnable() {
@@ -41,7 +42,7 @@ public class ToastUtil {
      * @param msg 需要显示的参数
      */
     public static void show(final String msg) {
-        if ("main".equals(Thread.currentThread().getName())) {
+        if (Looper.getMainLooper() == Looper.myLooper()) {
             createToast(msg);
         } else {
             ActivityUtil.getCurrentActivity().runOnUiThread(new Runnable() {
@@ -75,7 +76,7 @@ public class ToastUtil {
      */
     @Deprecated
     public static void showCenterToast(final String msg) {
-        if ("main".equals(Thread.currentThread().getName())) {
+        if (Looper.getMainLooper() == Looper.myLooper()) {
             createCenterToast(msg);
         } else {
             ActivityUtil.getCurrentActivity().runOnUiThread(new Runnable() {
@@ -93,7 +94,7 @@ public class ToastUtil {
      * @param msg 需要显示的参数
      */
     public static void showCenter(final String msg) {
-        if ("main".equals(Thread.currentThread().getName())) {
+        if (Looper.getMainLooper() == Looper.myLooper()) {
             createCenterToast(msg);
         } else {
             ActivityUtil.getCurrentActivity().runOnUiThread(new Runnable() {

@@ -4,7 +4,7 @@
 ![](https://img.shields.io/badge/language-Java%20&%20kotlin-orange.svg)
 ![](https://img.shields.io/hexpm/l/plug.svg)
 
-最近更新 2021.01.26
+最近更新 2021.05.25
 
 ### How to use
 
@@ -22,13 +22,13 @@ allprojects {
 ```
 dependencies {
     //kotlin 版本
-    implementation 'com.github.yechaoa.YUtils:yutilskt:3.2.0'
+    implementation 'com.github.yechaoa.YUtils:yutilskt:3.2.1'
 
     //java 版本
-    implementation 'com.github.yechaoa.YUtils:yutils:3.2.0'
+    implementation 'com.github.yechaoa.YUtils:yutils:3.2.1'
 
     //kotlin && java 版本
-    implementation 'com.github.yechaoa:YUtils:3.2.0'
+    implementation 'com.github.yechaoa:YUtils:3.2.1'
 }
 ```
 
@@ -50,7 +50,9 @@ LogUtil.setIsLog(true);
 
 * void init(Application app)<br>Application 中初始化
 
-* Application getApp()<br>获取全局上下文
+* Application getApp()<br>获取Application
+
+* Context getAppContext()<br>获取全局上下文
 
 * void showLoading(Activity activity,String msg)<br>Loading加载框
 
@@ -85,7 +87,11 @@ LogUtil.setIsLog(true);
 * void showCenter(final String msg)<br>showCenter 居中显示
 
 * void cancel()<br>取消Toast，onDestroy时调用，或onPause，当前页面finish之后在下一个页面不会再显示
- 
+
+> kotlin分支中添加了一个Toast扩展，比之前使用更加简单方便，调用示例：<br>
+> "111".show() -> 111 <br>
+> 111.show() -> 111 <br>
+> 111.show("222") -> 222 
  
 > ## 3.LogUtil（日志打印，带方法行数链接，可超长打印）
 
@@ -224,36 +230,16 @@ like this
 
  <br> 
  
-## 更新记录
+## 近期更新
 
+#### 3.2.1（2021-05-25）
+- 优化调整
+- 添加Toast扩展
+	
 #### 3.2.0（2021-01-26）
 - targetSdkVersion 30
 - ToastUtil适配Android 11
 
-#### 3.1.5（2020-12-29）
-- 初始化校验
-- YUtils新增sim卡判断
-
-#### 3.1.4（2020-12-26）
-- SpUtil优化
-
-#### 3.1.3（2020-10-30）
-- 添加DisplayUtil
-- 优化。
-
-#### 3.1.2 (2020-10-22)
-优化。
-
-#### 3.1.1
-优化引用方式，可以kotlin和java分开引用，也可以一起引用。
-
-#### 3.1.0
-简化了部分util原有的调用方式，属于兼容更新。
-
-#### 3.0.0
-- 3.0.0以后新增了`kotlin`版本；
-- 此外，java版本和kotlin版本都删除了`ExitUtils`；
-- kotlin版本没有`GsonUtil`；
 
 
 ### 混淆

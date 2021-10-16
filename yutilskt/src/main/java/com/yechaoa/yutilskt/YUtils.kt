@@ -54,8 +54,12 @@ object YUtils {
         if (this::mApp.isInitialized) {
             return mApp
         } else {
-            throw UninitializedPropertyAccessException("YUtils未在Application中初始化")
+            throw UninitializedPropertyAccessException("YUtils is not initialized in application")
         }
+    }
+
+    fun getAppContext(): Context {
+        return getApp().applicationContext
     }
 
     /**
@@ -235,7 +239,8 @@ object YUtils {
      * 关闭软键盘
      */
     fun closeSoftKeyboard() {
-        val inputManger = ActivityUtil.currentActivity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val inputManger =
+            ActivityUtil.currentActivity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputManger.hideSoftInputFromWindow(ActivityUtil.currentActivity!!.window.decorView.windowToken, 0)
     }
 

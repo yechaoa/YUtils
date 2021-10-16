@@ -1,16 +1,21 @@
 package com.yechaoa.app
 
+import android.os.Build
 import android.os.Bundle
+import android.os.Looper
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.yechaoa.app.databinding.ActivityMainBinding
 import com.yechaoa.yutilskt.*
+import kotlin.concurrent.thread
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mBinding: ActivityMainBinding
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
@@ -33,7 +38,6 @@ class MainActivity : AppCompatActivity() {
 
         mBinding.button.setOnClickListener {
             SpUtil.setStringSet("testStringSet", set)
-            //SpUtil.getBoolean("111",true)
         }
 
         mBinding.button2.setOnClickListener {
@@ -64,5 +68,17 @@ class MainActivity : AppCompatActivity() {
         mBinding.btnSim.setOnClickListener {
             ToastUtil.show(if (YUtils.hasSim()) "有sim卡" else "无sim卡")
         }
+
+        mBinding.btnThread.setOnClickListener {
+            LogUtil.d("" + mainLooper.isCurrentThread)
+            LogUtil.d("" + Looper.myLooper()!!.isCurrentThread)
+            val b = mainLooper == Looper.myLooper()
+            LogUtil.d("" + b)
+            thread {
+                ToastUtil.show("213")
+            }
+
+        }
+
     }
 }
