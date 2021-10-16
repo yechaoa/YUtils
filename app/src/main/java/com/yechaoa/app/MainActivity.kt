@@ -36,21 +36,21 @@ class MainActivity : AppCompatActivity() {
             set.add("-----" + array[i])
         }
 
-        mBinding.button.setOnClickListener {
+        mBinding.btnStrSet.setOnClickListener {
             SpUtil.setStringSet("testStringSet", set)
         }
 
-        mBinding.button2.setOnClickListener {
+        mBinding.btnStrSet2.setOnClickListener {
             val stringSet = SpUtil.getStringSet("testStringSet")
             LogUtil.i(stringSet.toString())
         }
 
-        mBinding.showLoading.setOnClickListener {
+        mBinding.btnShowLoading.setOnClickListener {
             YUtils.showLoading(this, "test")
             LogUtil.i("" + YUtils.loadingIsShowing())
         }
 
-        mBinding.hideLoading.setOnClickListener {
+        mBinding.btnHideLoading.setOnClickListener {
             ToastUtil.show("取消loading")
             YUtils.hideLoading()
             LogUtil.i("" + YUtils.loadingIsShowing())

@@ -14,25 +14,25 @@
         android:text="Hello World!" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_str_set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="存StringSet" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_str_set2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="读StringSet" />
 
     <Button
-        android:id="@+id/showLoading"
+        android:id="@+id/btn_showLoading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="showLoading" />
 
     <Button
-        android:id="@+id/hideLoading"
+        android:id="@+id/btn_hideLoading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
