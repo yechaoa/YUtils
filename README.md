@@ -21,13 +21,13 @@
 ```
 dependencies {
     //kotlin 版本
-    implementation 'com.github.yechaoa.YUtils:yutilskt:3.3.2'
+    implementation 'com.github.yechaoa.YUtils:yutilskt:3.3.3'
 
     //java 版本
-    implementation 'com.github.yechaoa.YUtils:yutils:3.3.2'
+    implementation 'com.github.yechaoa.YUtils:yutils:3.3.3'
 
     //kotlin && java 版本
-    implementation 'com.github.yechaoa:YUtils:3.3.2'
+    implementation 'com.github.yechaoa:YUtils:3.3.3'
 }
 ```
 
