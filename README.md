@@ -4,7 +4,9 @@
 ![](https://img.shields.io/badge/language-Java%20&%20kotlin-orange.svg)
 ![](https://img.shields.io/hexpm/l/plug.svg)
 
-最近更新 2021.10.16
+### Change Log
+- 【2024-04-01】Upgrade targetSdkVersion 30 to 31
+- 【2024-04-01】Upgrade gradle to 6.7.1
 
 ### How to use
 
