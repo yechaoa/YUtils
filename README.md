@@ -4,33 +4,30 @@
 ![](https://img.shields.io/badge/language-Java%20&%20kotlin-orange.svg)
 ![](https://img.shields.io/hexpm/l/plug.svg)
 
-### Change Log
-- 【2024-04-01】Upgrade targetSdkVersion 30 to 31
-- 【2024-04-01】Upgrade gradle to 6.7.1
-
 ### How to use
 
 - Step 1  project：build.gradle
 
 ```
-allprojects {
-	repositories {
-		...
-		maven { url 'https://www.jitpack.io' }
+	dependencyResolutionManagement {
+		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+		repositories {
+			mavenCentral()
+			maven { url 'https://jitpack.io' }
+		}
 	}
-}
 ```
 - Step 2  app：build.gradle（以下3种引用方式，三选一即可）
 ```
 dependencies {
     //kotlin 版本
-    implementation 'com.github.yechaoa.YUtils:yutilskt:3.2.2'
+    implementation 'com.github.yechaoa.YUtils:yutilskt:3.3.2'
 
     //java 版本
-    implementation 'com.github.yechaoa.YUtils:yutils:3.2.2'
+    implementation 'com.github.yechaoa.YUtils:yutils:3.3.2'
 
     //kotlin && java 版本
-    implementation 'com.github.yechaoa:YUtils:3.2.2'
+    implementation 'com.github.yechaoa:YUtils:3.3.2'
 }
 ```
 
@@ -236,6 +233,10 @@ like this
  
 ## 近期更新
 
+#### 3.3.2（2024-04-01）
+- Upgrade targetSdkVersion 30 to 31
+- Upgrade gradle to 6.7.1
+
 #### 3.2.2（2021-10-16）
 - optimized code
 
@@ -255,8 +256,6 @@ like this
 #YUtils
 -keep class com.yechaoa.yutils.**{*;}
 ```
-
- <br>  
  
 # 关于
  
@@ -264,7 +263,7 @@ like this
 - 我的邮箱：best_yc@163.com  
 
 
-<br><br>
+<br>
 
 
 ### License
