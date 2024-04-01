@@ -4,8 +4,17 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/YUtils.iml" filepath="$PROJECT_DIR$/.idea/modules/YUtils.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/YUtils.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/YUtils.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/YUtils.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/YUtils.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/YUtils.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/YUtils.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/YUtils.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/YUtils.app.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/yutils/YUtils.yutils.iml" filepath="$PROJECT_DIR$/.idea/modules/yutils/YUtils.yutils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/yutils/YUtils.yutils.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/yutils/YUtils.yutils.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/yutils/YUtils.yutils.main.iml" filepath="$PROJECT_DIR$/.idea/modules/yutils/YUtils.yutils.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/yutils/YUtils.yutils.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/yutils/YUtils.yutils.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/yutilskt/YUtils.yutilskt.iml" filepath="$PROJECT_DIR$/.idea/modules/yutilskt/YUtils.yutilskt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/yutilskt/YUtils.yutilskt.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/yutilskt/YUtils.yutilskt.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/yutilskt/YUtils.yutilskt.main.iml" filepath="$PROJECT_DIR$/.idea/modules/yutilskt/YUtils.yutilskt.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/yutilskt/YUtils.yutilskt.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/yutilskt/YUtils.yutilskt.unitTest.iml" />
     </modules>
   </component>
 </project>
