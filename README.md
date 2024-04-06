@@ -4,7 +4,7 @@
 ![](https://img.shields.io/badge/language-Java%20&%20kotlin-orange.svg)
 ![](https://img.shields.io/hexpm/l/plug.svg)
 
-### How to use
+## How to use
 
 - Step 1  project：build.gradle
 
@@ -21,19 +21,19 @@
 ```
 dependencies {
     //kotlin 版本
-    implementation 'com.github.yechaoa.YUtils:yutilskt:3.3.3'
+    implementation 'com.github.yechaoa.YUtils:yutilskt:3.4.0'
 
     //java 版本
-    implementation 'com.github.yechaoa.YUtils:yutils:3.3.3'
+    implementation 'com.github.yechaoa.YUtils:yutils:3.4.0'
 
     //kotlin && java 版本
-    implementation 'com.github.yechaoa:YUtils:3.3.3'
+    implementation 'com.github.yechaoa:YUtils:3.4.0'
 }
 ```
 
 
-# 一、初始化
-#### in your Application
+# 一、初始化（Initialization）
+### in your Application
 
 ```
 //初始化
@@ -43,7 +43,7 @@ YUtils.init(this);
 LogUtil.setIsLog(true);
 ```
 
-# 二、功能
+# 二、功能（Feature）
 
 > ## 1.YUtils（各种小工具）
 
@@ -231,7 +231,7 @@ like this
 
  <br> 
  
-## 近期更新
+## 近期更新（Change Log）
 
 #### 3.4.0（2024-04-06）
 - Upgrade gradle version to 7.5
@@ -252,24 +252,21 @@ like this
 - ToastUtil适配Android 11
 
 
-
-### 混淆
+## 混淆
 
 ```
 #YUtils
 -keep class com.yechaoa.yutils.**{*;}
 ```
  
-# 关于
+## 关于（About）
  
-- 我的博客：http://blog.csdn.net/yechaoa  
-- 我的邮箱：best_yc@163.com  
+- 我的博客：
+  - https://juejin.cn/user/659362706101735/posts
+  - http://blog.csdn.net/yechaoa
+- 我的邮箱：yechaoa@gmail.com
 
-
-<br>
-
-
-### License
+## License
 
 ```
    Copyright 2017 yechaoa
