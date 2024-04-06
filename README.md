@@ -233,7 +233,10 @@ like this
  
 ## 近期更新
 
-#### 3.3.2（2024-04-01）
+#### 3.4.0（2024-04-06）
+- Upgrade gradle version to 7.5
+
+#### 3.3.3（2024-04-01）
 - Upgrade targetSdkVersion 30 to 31
 - Upgrade gradle to 6.7.1
 
